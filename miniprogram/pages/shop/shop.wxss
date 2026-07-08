@@ -1,0 +1,21 @@
+@import "../../app.wxss";
+
+/* 商品卡片额外样式 */
+.product-card {
+  position: relative;
+  transition: transform 0.15s ease;
+}
+.product-card:active {
+  transform: scale(0.98);
+}
+
+/* 按钮覆盖 */
+button.btn-primary, button.btn-outline {
+  border-radius: 48rpx;
+  font-size: 28rpx;
+  padding: 24rpx 0;
+  margin: 0;
+}
+button::after {
+  border: none;
+}

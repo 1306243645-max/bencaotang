@@ -1,0 +1,105 @@
+<!-- ═══════════ 我的 ═══════════ -->
+
+<!-- 用户信息卡片 -->
+<view class="header-card" style="display: flex; align-items: center; padding: 48rpx 32rpx;">
+  <view style="width: 120rpx; height: 120rpx; border-radius: 50%; background: linear-gradient(135deg, #2B7A4B, #43A047); display: flex; align-items: center; justify-content: center; font-size: 56rpx;">
+    {{userInfo.avatar || '🧑'}}
+  </view>
+  <view style="margin-left: 24rpx; flex: 1;">
+    <view style="font-size: 36rpx; font-weight: 700; color: #FFFFFF;">
+      {{userInfo.nickName || '本草堂用户'}}
+    </view>
+    <view style="font-size: 26rpx; color: rgba(255,255,255,0.75); margin-top: 8rpx;">
+      {{userInfo.phone || '点击登录 · 解锁更多功能'}}
+    </view>
+  </view>
+  <view style="color: rgba(255,255,255,0.6); font-size: 32rpx;" bindtap="handleLogin">
+    →
+  </view>
+</view>
+
+<!-- 数据概览 -->
+<view class="card" style="display: flex; text-align: center; padding: 28rpx 8rpx;">
+  <view style="flex: 1;" bindtap="goConsultHistory">
+    <view style="font-size: 44rpx; font-weight: 700; color: #2B7A4B;">{{stats.consults}}</view>
+    <view style="font-size: 24rpx; color: #999; margin-top: 4rpx;">问诊次数</view>
+  </view>
+  <view style="width: 1px; background: #F0F0F0;"></view>
+  <view style="flex: 1;" bindtap="goOrders">
+    <view style="font-size: 44rpx; font-weight: 700; color: #2B7A4B;">{{stats.orders}}</view>
+    <view style="font-size: 24rpx; color: #999; margin-top: 4rpx;">我的订单</view>
+  </view>
+  <view style="width: 1px; background: #F0F0F0;"></view>
+  <view style="flex: 1;" bindtap="goBookings">
+    <view style="font-size: 44rpx; font-weight: 700; color: #2B7A4B;">{{stats.bookings}}</view>
+    <view style="font-size: 24rpx; color: #999; margin-top: 4rpx;">预约记录</view>
+  </view>
+</view>
+
+<!-- 功能菜单 -->
+<view class="card" style="margin-top: 24rpx; padding: 0;">
+  <view class="menu-item" bindtap="goConsultHistory">
+    <view class="menu-icon">💬</view>
+    <view class="menu-text">问诊记录</view>
+    <view class="menu-badge" wx:if="{{stats.consults > 0}}">{{stats.consults}}</view>
+    <view class="menu-arrow">→</view>
+  </view>
+  <view class="menu-item" bindtap="goConstitution">
+    <view class="menu-icon">📋</view>
+    <view class="menu-text">体质报告</view>
+    <view class="menu-arrow">→</view>
+  </view>
+  <view class="menu-item" bindtap="goOrders">
+    <view class="menu-icon">🛒</view>
+    <view class="menu-text">我的订单</view>
+    <view class="menu-badge" wx:if="{{stats.orders > 0}}">{{stats.orders}}</view>
+    <view class="menu-arrow">→</view>
+  </view>
+  <view class="menu-item" bindtap="goBookings">
+    <view class="menu-icon">📅</view>
+    <view class="menu-text">预约记录</view>
+    <view class="menu-badge" wx:if="{{stats.bookings > 0}}">{{stats.bookings}}</view>
+    <view class="menu-arrow">→</view>
+  </view>
+</view>
+
+<!-- 设置菜单 -->
+<view class="card" style="margin-top: 24rpx; padding: 0;">
+  <view class="menu-item" bindtap="goFavorites">
+    <view class="menu-icon">⭐</view>
+    <view class="menu-text">我的收藏</view>
+    <view class="menu-arrow">→</view>
+  </view>
+  <view class="menu-item" bindtap="shareApp">
+    <view class="menu-icon">📤</view>
+    <view class="menu-text">分享给朋友</view>
+    <view class="menu-arrow">→</view>
+  </view>
+  <view class="menu-item" bindtap="goAbout">
+    <view class="menu-icon">ℹ️</view>
+    <view class="menu-text">关于本草堂</view>
+    <view class="menu-arrow">→</view>
+  </view>
+</view>
+
+<!-- 联系客服 -->
+<view class="card" style="margin-top: 24rpx; text-align: center; padding: 32rpx;">
+  <view style="font-size: 28rpx; color: #636E72; margin-bottom: 20rpx;">需要帮助？</view>
+  <view style="display: flex; gap: 16rpx;">
+    <button class="btn-primary" style="flex: 1; margin: 0; font-size: 28rpx;" bindtap="callPhone">
+      📞 {{contactInfo.phone}}
+    </button>
+    <button class="btn-outline" style="flex: 1; margin: 0; font-size: 28rpx;" bindtap="copyWechat">
+      💬 复制微信
+    </button>
+  </view>
+</view>
+
+<!-- 底部 -->
+<view class="disclaimer">
+  <view>🌿 {{contactInfo.clinicName}}</view>
+  <view>三代传承 · 正宗中医</view>
+  <view style="margin-top: 12rpx;">⚠️ AI问诊仅供健康教育参考</view>
+  <view style="margin-top: 4rpx;">不构成医疗建议</view>
+  <view style="margin-top: 16rpx;">© 2026 山东本草堂中医诊所</view>
+</view>

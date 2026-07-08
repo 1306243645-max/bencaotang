@@ -1,0 +1,29 @@
+@import "../../app.wxss";
+
+/* 专家卡片悬停效果 */
+.card:active {
+  background: #FAFBFA;
+}
+
+/* 按钮样式覆盖 */
+button.btn-primary, button.btn-outline {
+  border-radius: 48rpx;
+  font-size: 28rpx;
+  padding: 24rpx 0;
+}
+
+button.btn-primary {
+  background: #2B7A4B;
+  color: #fff;
+}
+
+button.btn-outline {
+  background: #fff;
+  border: 2rpx solid #2B7A4B;
+  color: #2B7A4B;
+}
+
+/* 移除button默认样式 */
+button::after {
+  border: none;
+}

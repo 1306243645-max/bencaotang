@@ -1,0 +1,8 @@
+streamlit>=1.28
+anthropic
+pillow
+qrcode
+pydantic
+python-dotenv
+requests
+numpy

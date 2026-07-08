@@ -1,0 +1,35 @@
+/* ═══════════ 我的页面样式 ═══════════ */
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 32rpx;
+  border-bottom: 1px solid #F5F7FA;
+}
+.menu-item:last-child {
+  border-bottom: none;
+}
+.menu-icon {
+  font-size: 36rpx;
+  width: 56rpx;
+  text-align: center;
+  margin-right: 16rpx;
+}
+.menu-text {
+  flex: 1;
+  font-size: 30rpx;
+  color: #2D3436;
+  font-weight: 500;
+}
+.menu-badge {
+  background: #2B7A4B;
+  color: #FFFFFF;
+  font-size: 22rpx;
+  padding: 2rpx 14rpx;
+  border-radius: 20rpx;
+  margin-right: 12rpx;
+}
+.menu-arrow {
+  font-size: 28rpx;
+  color: #C0C0C0;
+}

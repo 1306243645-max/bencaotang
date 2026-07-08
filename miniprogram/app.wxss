@@ -1,0 +1,498 @@
+/* ═══════════════ 本草堂 · 全局样式 ═══════════════ */
+page {
+  background: #F5F7FA;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  color: #2D3436;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* ── 颜色变量（通过类名使用）── */
+.primary-color { color: #2B7A4B; }
+.primary-bg { background: #2B7A4B; }
+.text-muted { color: #636E72; }
+.text-dark { color: #2D3436; }
+
+/* ── 头部卡片 ── */
+.header-card {
+  background: linear-gradient(135deg, #2B7A4B, #3D9B5D);
+  color: #fff;
+  padding: 48rpx 32rpx;
+  border-radius: 0 0 32rpx 32rpx;
+}
+.header-card .title {
+  font-size: 40rpx;
+  font-weight: 700;
+}
+.header-card .subtitle {
+  font-size: 28rpx;
+  opacity: 0.9;
+  margin-top: 8rpx;
+}
+
+/* ── 通用卡片 ── */
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin: 20rpx 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ── 网格布局 ── */
+.grid-2 {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 12rpx 24rpx;
+}
+.grid-2-item {
+  width: 50%;
+  padding: 12rpx;
+  box-sizing: border-box;
+}
+
+.grid-4 {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 12rpx 24rpx;
+}
+.grid-4-item {
+  width: 25%;
+  padding: 16rpx 8rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.grid-4-item .icon {
+  font-size: 48rpx;
+  margin-bottom: 8rpx;
+}
+.grid-4-item .label {
+  font-size: 24rpx;
+  color: #555;
+}
+
+/* ── 按钮 ── */
+.btn-primary {
+  background: #2B7A4B;
+  color: #fff;
+  border-radius: 48rpx;
+  padding: 24rpx 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 30rpx;
+  margin: 20rpx 24rpx;
+}
+.btn-primary:active {
+  background: #236A3D;
+}
+.btn-outline {
+  border: 2rpx solid #2B7A4B;
+  color: #2B7A4B;
+  border-radius: 48rpx;
+  padding: 20rpx 0;
+  text-align: center;
+  font-weight: 500;
+  font-size: 28rpx;
+  margin: 12rpx 24rpx;
+  background: #fff;
+}
+
+/* ── 标签 ── */
+.tag {
+  display: inline-block;
+  background: #E8F5E9;
+  color: #2B7A4B;
+  padding: 8rpx 20rpx;
+  border-radius: 32rpx;
+  font-size: 24rpx;
+  margin: 8rpx 8rpx 8rpx 0;
+}
+.tag:active {
+  background: #C8E6C9;
+}
+.tag-hot {
+  display: inline-block;
+  background: #FFF3E0;
+  color: #E65100;
+  padding: 4rpx 12rpx;
+  border-radius: 16rpx;
+  font-size: 20rpx;
+}
+
+/* ── 专家卡片 ── */
+.expert-card {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+.expert-card:last-child {
+  border-bottom: none;
+}
+.expert-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #E8F5E9;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 44rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+.expert-info {
+  flex: 1;
+}
+.expert-info .name {
+  font-weight: 600;
+  font-size: 32rpx;
+  color: #2D3436;
+}
+.expert-info .title {
+  font-size: 26rpx;
+  color: #636E72;
+  margin-top: 4rpx;
+}
+.expert-info .field {
+  font-size: 24rpx;
+  color: #2B7A4B;
+  margin-top: 4rpx;
+}
+
+/* ── 商品卡片 ── */
+.product-card {
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+  position: relative;
+}
+.product-icon {
+  font-size: 80rpx;
+  text-align: center;
+  padding: 24rpx 0 8rpx;
+}
+.product-info {
+  padding: 0 20rpx 20rpx;
+}
+.product-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2D3436;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.product-desc {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 6rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.product-price {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #2B7A4B;
+  margin-top: 12rpx;
+}
+.product-tag {
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+}
+
+/* ── 聊天气泡 ── */
+.chat-area {
+  padding: 20rpx 24rpx;
+  padding-bottom: 140rpx;
+}
+.msg-row {
+  display: flex;
+  margin-bottom: 28rpx;
+}
+.msg-row.user {
+  justify-content: flex-end;
+}
+.msg-row.ai {
+  justify-content: flex-start;
+}
+.msg-bubble {
+  max-width: 80%;
+  padding: 20rpx 24rpx;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+  word-break: break-all;
+}
+.msg-bubble.user {
+  background: #2B7A4B;
+  color: #fff;
+  border-bottom-right-radius: 6rpx;
+}
+.msg-bubble.ai {
+  background: #fff;
+  color: #2D3436;
+  border-bottom-left-radius: 6rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+/* ── 底部输入栏 ── */
+.input-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 16rpx 20rpx;
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  border-top: 1rpx solid #F0F0F0;
+  z-index: 100;
+}
+.input-bar .input {
+  flex: 1;
+  background: #F5F7FA;
+  border-radius: 40rpx;
+  padding: 16rpx 28rpx;
+  font-size: 28rpx;
+  height: 72rpx;
+  box-sizing: border-box;
+}
+.input-bar .btn-send {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background: #2B7A4B;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16rpx;
+  font-size: 32rpx;
+  flex-shrink: 0;
+}
+
+/* ── 我的页面 ── */
+.mine-header {
+  background: linear-gradient(135deg, #2B7A4B, #3D9B5D);
+  padding: 60rpx 32rpx 48rpx;
+  text-align: center;
+  color: #fff;
+}
+.mine-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  margin: 0 auto 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56rpx;
+}
+.mine-name {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.mine-desc {
+  font-size: 24rpx;
+  opacity: 0.85;
+  margin-top: 8rpx;
+}
+.menu-group {
+  margin: 20rpx 24rpx;
+}
+.menu-group-title {
+  font-size: 26rpx;
+  color: #999;
+  padding: 8rpx 0;
+}
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+.menu-item:first-child {
+  border-radius: 16rpx 16rpx 0 0;
+}
+.menu-item:last-child {
+  border-radius: 0 0 16rpx 16rpx;
+  border-bottom: none;
+}
+.menu-item:only-child {
+  border-radius: 16rpx;
+}
+.menu-item .menu-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+.menu-item .menu-label {
+  flex: 1;
+  font-size: 28rpx;
+  color: #2D3436;
+}
+.menu-item .menu-arrow {
+  color: #C0C0C0;
+  font-size: 26rpx;
+}
+.menu-item .menu-badge {
+  background: #E74C3C;
+  color: #fff;
+  font-size: 22rpx;
+  padding: 2rpx 12rpx;
+  border-radius: 20rpx;
+  margin-right: 12rpx;
+}
+
+/* ── 底部联系栏 ── */
+.contact-bar {
+  display: flex;
+  justify-content: space-around;
+  padding: 24rpx;
+  background: #fff;
+  margin: 20rpx 24rpx;
+  border-radius: 16rpx;
+}
+.contact-item {
+  text-align: center;
+  flex: 1;
+}
+.contact-item .icon {
+  font-size: 40rpx;
+  margin-bottom: 4rpx;
+}
+.contact-item .label {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* ── 免责声明 ── */
+.disclaimer {
+  text-align: center;
+  padding: 32rpx;
+  font-size: 22rpx;
+  color: #B0B0B0;
+  line-height: 1.8;
+}
+
+/* ── 空状态 ── */
+.empty-state {
+  text-align: center;
+  padding: 80rpx 40rpx;
+  color: #C0C0C0;
+}
+.empty-state .icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+.empty-state .text {
+  font-size: 28rpx;
+}
+
+/* ── 特色卡片 ── */
+.feature-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 28rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+.feature-card .icon {
+  font-size: 56rpx;
+  margin-bottom: 16rpx;
+}
+.feature-card .title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2D3436;
+  margin-bottom: 8rpx;
+}
+.feature-card .desc {
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1.5;
+}
+
+/* ── 弹窗/遮罩 ── */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+}
+.sheet {
+  background: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 32rpx;
+  width: 100%;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.sheet-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 24rpx;
+}
+
+/* ── 分割线 ── */
+.divider {
+  height: 16rpx;
+  background: #F5F7FA;
+}
+
+/* ── 模板按钮区 ── */
+.template-scroll {
+  white-space: nowrap;
+  padding: 16rpx 24rpx;
+}
+.template-btn {
+  display: inline-block;
+  background: #E8F5E9;
+  color: #2B7A4B;
+  padding: 12rpx 24rpx;
+  border-radius: 32rpx;
+  font-size: 26rpx;
+  margin-right: 16rpx;
+  white-space: nowrap;
+}
+.template-btn:active {
+  background: #C8E6C9;
+}
+
+/* ── 分类Tab ── */
+.cat-tabs {
+  display: flex;
+  background: #fff;
+  padding: 8rpx 24rpx;
+  white-space: nowrap;
+}
+.cat-tab {
+  display: inline-block;
+  padding: 12rpx 24rpx;
+  font-size: 26rpx;
+  color: #636E72;
+  border-radius: 32rpx;
+  margin-right: 12rpx;
+}
+.cat-tab.active {
+  background: #E8F5E9;
+  color: #2B7A4B;
+  font-weight: 600;
+}

@@ -1,0 +1,89 @@
+<!-- ═══════════ 名医堂 ═══════════ -->
+
+<!-- 头部 -->
+<view class="header-card" style="text-align: center;">
+  <view style="font-size: 64rpx; margin-bottom: 12rpx;">👨‍⚕️</view>
+  <view class="title">名医堂</view>
+  <view class="subtitle">三代传承 · 名医荟萃</view>
+</view>
+
+<!-- 简介 -->
+<view class="card" style="text-align: center;">
+  <view style="font-size: 28rpx; color: #636E72; line-height: 1.8;">
+    本草堂汇聚山东及全国著名中医专家，<br/>
+    涵盖风水堪舆、五运六气、AI问诊等多领域，<br/>
+    为您提供专业中医健康服务。
+  </view>
+</view>
+
+<!-- 专家列表 -->
+<view style="padding: 0 24rpx;">
+  <view style="font-weight: 600; font-size: 30rpx; color: #2D3436; margin-bottom: 16rpx;">🏆 专家团队</view>
+</view>
+
+<view wx:for="{{experts}}" wx:key="id">
+  <view class="card" style="margin-top: 0; margin-bottom: 20rpx;" bindtap="tapExpert" data-expert="{{item}}">
+    <view class="expert-card" style="padding: 0;">
+      <!-- 头像 -->
+      <view class="expert-avatar" style="width: 120rpx; height: 120rpx; line-height: 120rpx; font-size: 52rpx;">
+        {{item.icon}}
+      </view>
+      <!-- 信息 -->
+      <view class="expert-info">
+        <view class="name">{{item.name}}</view>
+        <view class="title">{{item.title}}</view>
+        <view class="field">{{item.field}}</view>
+        <!-- 标签 -->
+        <view style="margin-top: 12rpx;">
+          <text wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag"
+            class="tag" style="padding: 4rpx 16rpx; font-size: 22rpx; margin-right: 8rpx;">
+            {{tag}}
+          </text>
+        </view>
+      </view>
+      <!-- 箭头 -->
+      <view style="color: #C0C0C0; font-size: 32rpx; flex-shrink: 0;">→</view>
+    </view>
+  </view>
+</view>
+
+<!-- 合作机构 -->
+<view class="divider"></view>
+
+<view style="padding: 24rpx;">
+  <view style="font-weight: 600; font-size: 30rpx; color: #2D3436; margin-bottom: 16rpx;">🏥 合作机构</view>
+</view>
+
+<view wx:for="{{institutions}}" wx:key="name">
+  <view class="card" style="margin-top: 0; margin-bottom: 16rpx;">
+    <view style="display: flex; align-items: center;">
+      <view style="font-size: 48rpx; margin-right: 20rpx;">{{item.icon}}</view>
+      <view style="flex: 1;">
+        <view style="font-size: 30rpx; font-weight: 600; color: #2D3436;">{{item.name}}</view>
+        <view style="font-size: 26rpx; color: #2B7A4B; margin-top: 4rpx;">{{item.subtitle}}</view>
+        <view style="font-size: 24rpx; color: #999; margin-top: 6rpx;">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 联系咨询 -->
+<view class="card" style="text-align: center;">
+  <view style="font-size: 28rpx; color: #636E72; margin-bottom: 20rpx;">
+    想预约专家门诊或咨询合作？
+  </view>
+  <view style="display: flex; gap: 16rpx;">
+    <button class="btn-primary" style="flex: 1; margin: 0; font-size: 28rpx;" bindtap="callPhone">
+      📞 电话咨询
+    </button>
+    <button class="btn-outline" style="flex: 1; margin: 0; font-size: 28rpx;" bindtap="copyWechat">
+      💬 微信联系
+    </button>
+  </view>
+</view>
+
+<!-- 底部 -->
+<view class="disclaimer">
+  <view>🌿 本草堂中医诊所</view>
+  <view>三代传承 · 正宗中医</view>
+</view>

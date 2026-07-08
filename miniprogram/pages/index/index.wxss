@@ -1,0 +1,10 @@
+@import "../../app.wxss";
+
+/* 首页特有样式 */
+.feature-card {
+  min-height: 240rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}

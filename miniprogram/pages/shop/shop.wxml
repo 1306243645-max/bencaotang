@@ -1,0 +1,138 @@
+<!-- ═══════════ 养生商城 ═══════════ -->
+
+<!-- 头部 -->
+<view class="header-card" style="text-align: center;">
+  <view style="font-size: 56rpx; margin-bottom: 8rpx;">🛒</view>
+  <view class="title">养生商城</view>
+  <view class="subtitle">药食同源 · 精选好物 · 品质保证</view>
+</view>
+
+<!-- 分类Tab -->
+<scroll-view scroll-x class="cat-tabs" style="position: sticky; top: 0; z-index: 50; background: #fff;">
+  <view wx:for="{{categories}}" wx:key="*this"
+    class="cat-tab {{index === activeCategory ? 'active' : ''}}"
+    data-idx="{{index}}" bindtap="switchCategory">
+    {{item}}
+  </view>
+</scroll-view>
+
+<!-- 商品网格 -->
+<view class="grid-2">
+  <view wx:for="{{products}}" wx:key="id" class="grid-2-item"
+    wx:if="{{activeCategory === 0 || item.category === categories[activeCategory]}}">
+    <view class="product-card">
+      <!-- 标签 -->
+      <view class="product-tag">
+        <text class="tag-hot">{{item.tag}}</text>
+      </view>
+      <!-- 图标 -->
+      <view class="product-icon">{{item.icon}}</view>
+      <!-- 信息 -->
+      <view class="product-info">
+        <view class="product-name">{{item.name}}</view>
+        <view class="product-desc">{{item.desc}}</view>
+        <view style="display: flex; justify-content: space-between; align-items: center; margin-top: 16rpx;">
+          <view class="product-price">¥{{item.price}}</view>
+          <view style="background: #2B7A4B; color: #fff; width: 48rpx; height: 48rpx; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 32rpx; font-weight: 700;"
+            bindtap="addToCart" data-product="{{item}}">
+            +
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 购买方式说明 -->
+<view class="card">
+  <view style="font-weight: 600; font-size: 30rpx; color: #2D3436; margin-bottom: 20rpx;">
+    📦 购买方式
+  </view>
+  <view style="font-size: 26rpx; color: #636E72; line-height: 2;">
+    <view>1️⃣ <text style="color: #2B7A4B; font-weight: 600;">微信下单</text> — 添加微信直接下单，转账后发地址当天发货</view>
+    <view>2️⃣ <text style="color: #2B7A4B; font-weight: 600;">电话订购</text> — 拨打 18254191315</view>
+    <view>3️⃣ <text style="color: #2B7A4B; font-weight: 600;">到店选购</text> — 山东省济南市历下区经十路123号</view>
+  </view>
+</view>
+
+<!-- 联系 -->
+<view style="display: flex; padding: 0 24rpx; gap: 16rpx;">
+  <button class="btn-primary" style="flex: 1;" bindtap="copyWechat">
+    💬 微信下单
+  </button>
+  <button class="btn-outline" style="flex: 1;" bindtap="callPhone">
+    📞 电话订购
+  </button>
+</view>
+
+<!-- 购物车悬浮按钮 -->
+<view style="position: fixed; bottom: 200rpx; right: 32rpx; z-index: 150;"
+  bindtap="toggleCart">
+  <view style="width: 96rpx; height: 96rpx; border-radius: 50%; background: #2B7A4B;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 6rpx 20rpx rgba(43, 122, 75, 0.35);">
+    <text style="font-size: 44rpx;">🛒</text>
+  </view>
+  <view wx:if="{{cartCount > 0}}"
+    style="position: absolute; top: -8rpx; right: -8rpx; min-width: 40rpx; height: 40rpx;
+    background: #E74C3C; color: #fff; border-radius: 20rpx; font-size: 22rpx;
+    display: flex; align-items: center; justify-content: center; padding: 0 8rpx;">
+    {{cartCount}}
+  </view>
+</view>
+
+<!-- 购物车面板 -->
+<view wx:if="{{showCart}}" class="overlay" bindtap="toggleCart">
+  <view class="sheet" catchtap="noop">
+    <view class="sheet-title">🛒 购物车</view>
+
+    <!-- 购物车列表 -->
+    <view wx:if="{{cart.length > 0}}">
+      <view wx:for="{{cart}}" wx:key="id" style="display: flex; align-items: center; padding: 20rpx 0;
+        border-bottom: 1rpx solid #F5F5F5;">
+        <view style="font-size: 48rpx; margin-right: 16rpx;">{{item.icon}}</view>
+        <view style="flex: 1;">
+          <view style="font-size: 28rpx; font-weight: 600;">{{item.name}}</view>
+          <view style="font-size: 26rpx; color: #2B7A4B; font-weight: 700;">¥{{item.price}}</view>
+        </view>
+        <!-- 数量控制 -->
+        <view style="display: flex; align-items: center;">
+          <view style="width: 48rpx; height: 48rpx; border-radius: 50%; background: #F5F5F5;
+            display: flex; align-items: center; justify-content: center; font-size: 32rpx; color: #999;"
+            bindtap="decreaseQty" data-id="{{item.id}}">−</view>
+          <view style="width: 56rpx; text-align: center; font-size: 28rpx; font-weight: 600;">{{item.qty}}</view>
+          <view style="width: 48rpx; height: 48rpx; border-radius: 50%; background: #E8F5E9;
+            display: flex; align-items: center; justify-content: center; font-size: 32rpx; color: #2B7A4B;"
+            bindtap="increaseQty" data-id="{{item.id}}">+</view>
+        </view>
+      </view>
+
+      <!-- 合计 -->
+      <view style="display: flex; justify-content: space-between; padding: 24rpx 0;
+        font-size: 32rpx; font-weight: 700;">
+        <text>合计</text>
+        <text style="color: #2B7A4B;">
+          ¥{{cart.reduce((sum, item) => sum + item.price * item.qty, 0)}}
+        </text>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view style="display: flex; gap: 16rpx;">
+        <button class="btn-outline" style="flex: 1;" bindtap="clearCart">清空</button>
+        <button class="btn-primary" style="flex: 1;" bindtap="submitOrder">确认下单</button>
+      </view>
+    </view>
+
+    <!-- 空购物车 -->
+    <view wx:else class="empty-state">
+      <view class="icon">🛒</view>
+      <view class="text">购物车空空，去逛逛吧~</view>
+    </view>
+  </view>
+</view>
+
+<!-- 底部 -->
+<view class="disclaimer" style="padding-bottom: 40rpx;">
+  <view>🌿 本草堂中医诊所</view>
+  <view>药食同源 · 品质保证</view>
+</view>

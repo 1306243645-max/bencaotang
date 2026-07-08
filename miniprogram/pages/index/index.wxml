@@ -1,0 +1,103 @@
+<!-- ═══════════ 首页 ═══════════ -->
+
+<!-- 顶部Hero Banner -->
+<view class="header-card" style="padding-top: 60rpx; padding-bottom: 60rpx; text-align: center;">
+  <view style="font-size: 80rpx; margin-bottom: 16rpx;">🌿</view>
+  <view class="title">{{clinicName}}</view>
+  <view class="subtitle">{{slogan}}</view>
+  <view style="margin-top: 24rpx; font-size: 24rpx; opacity: 0.85;">
+    <text>✅ 22知识库</text>
+    <text style="margin-left: 24rpx;">✅ 24h在线</text>
+    <text style="margin-left: 24rpx;">✅ 名医团队</text>
+  </view>
+</view>
+
+<!-- AI问诊突出入口 -->
+<view class="card" style="background: linear-gradient(135deg, #E8F5E9, #F1F8E9); margin-top: 24rpx;" bindtap="goConsult">
+  <view style="display: flex; align-items: center; justify-content: space-between;">
+    <view>
+      <view style="font-weight: 700; font-size: 34rpx; color: #2B7A4B;">🤖 AI 智能问诊</view>
+      <view style="font-size: 26rpx; color: #636E72; margin-top: 8rpx;">描述症状 · 即刻辨证 · 五维调理方案</view>
+    </view>
+    <view style="font-size: 44rpx; color: #2B7A4B;">→</view>
+  </view>
+</view>
+
+<!-- 四大核心功能入口 -->
+<view class="grid-4" style="margin: 12rpx 0;">
+  <view class="grid-4-item" bindtap="goConsult">
+    <view class="icon">💬</view>
+    <view class="label">AI问诊</view>
+  </view>
+  <view class="grid-4-item" bindtap="goTongue">
+    <view class="icon">👅</view>
+    <view class="label">AI舌诊</view>
+  </view>
+  <view class="grid-4-item" bindtap="goShop">
+    <view class="icon">🛒</view>
+    <view class="label">养生商城</view>
+  </view>
+  <view class="grid-4-item" bindtap="goExperts">
+    <view class="icon">👨‍⚕️</view>
+    <view class="label">名医团队</view>
+  </view>
+</view>
+
+<!-- 三大特色 -->
+<view style="padding: 12rpx 24rpx;">
+  <view style="font-weight: 600; font-size: 32rpx; color: #2D3436; margin-bottom: 16rpx;">✨ 本堂特色</view>
+  <view style="display: flex; gap: 16rpx;">
+    <view class="feature-card" wx:for="{{features}}" wx:key="title" style="flex: 1;">
+      <view class="icon">{{item.icon}}</view>
+      <view class="title">{{item.title}}</view>
+      <view class="desc">{{item.desc}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 快速问诊标签 -->
+<view class="card">
+  <view style="font-weight: 600; font-size: 30rpx; color: #2D3436; margin-bottom: 16rpx;">💡 快速问诊</view>
+  <view style="display: flex; flex-wrap: wrap;">
+    <view class="tag" bindtap="quickAsk" data-q="失眠怎么办，多梦易醒">😴 失眠</view>
+    <view class="tag" bindtap="quickAsk" data-q="胃胀不消化怎么调理">🍽️ 胃胀</view>
+    <view class="tag" bindtap="quickAsk" data-q="痛经怎么缓解，怕冷">👩 痛经</view>
+    <view class="tag" bindtap="quickAsk" data-q="总是疲劳没精神乏力">💪 疲劳</view>
+    <view class="tag" bindtap="quickAsk" data-q="手脚冰凉什么体质怎么调理">❄️ 体寒</view>
+    <view class="tag" bindtap="quickAsk" data-q="帮我测一下中医体质">📋 测体质</view>
+    <view class="tag" bindtap="quickAsk" data-q="三伏天怎么养生调理">🌡️ 三伏天</view>
+    <view class="tag" bindtap="quickAsk" data-q="脸上长痘痘是什么原因">🔴 长痘</view>
+  </view>
+</view>
+
+<!-- 联系信息 -->
+<view class="card">
+  <view style="font-weight: 600; font-size: 30rpx; color: #2D3436; margin-bottom: 20rpx;">📞 联系我们</view>
+  <view class="contact-bar" style="margin: 0; padding: 0;">
+    <view class="contact-item" bindtap="callPhone">
+      <view class="icon">📞</view>
+      <view class="label">电话咨询</view>
+    </view>
+    <view class="contact-item" bindtap="copyWechat">
+      <view class="icon">💬</view>
+      <view class="label">复制微信</view>
+    </view>
+    <view class="contact-item" bindtap="goExperts">
+      <view class="icon">👨‍⚕️</view>
+      <view class="label">名医团队</view>
+    </view>
+    <view class="contact-item" bindtap="goShop">
+      <view class="icon">🛒</view>
+      <view class="label">养生商城</view>
+    </view>
+  </view>
+</view>
+
+<!-- 底部信息 -->
+<view class="disclaimer">
+  <view>🌿 {{clinicName}}</view>
+  <view>📞 {{contactInfo.phone}} | 💬 微信: {{contactInfo.wechat}}</view>
+  <view style="margin-top: 8rpx;">📍 {{contactInfo.address}}</view>
+  <view style="margin-top: 16rpx;">⚠️ AI问诊仅供健康教育参考，不构成医疗建议。</view>
+  <view>© 2026 山东本草堂中医诊所</view>
+</view>
