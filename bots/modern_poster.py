@@ -109,20 +109,35 @@ def create(url: str):
 
     # ═══ 网址展示 ═══
     url_y = quote_y + 130
-    f_cta = ff(32, True)
-    d.text((W//2, url_y), "访 问 网 站", fill=(45, 25, 80), font=f_cta, anchor="mm")
 
-    # 域名框
-    d.rounded_rectangle([140, url_y+35, W-140, url_y+155], radius=14,
-                       fill=(248, 246, 252), outline=(155, 142, 196), width=3)
-    f_domain = ff(38, True)
-    d.text((W//2, url_y+70), "本草堂.icu", fill=(60, 40, 100), font=f_domain, anchor="mm")
-    f_url = ff(26)
-    d.text((W//2, url_y+108), "bore.pub:21672", fill=(140, 125, 165), font=f_url, anchor="mm")
-    d.text((W//2, url_y+138), "微信浏览器直接打开", fill=(160, 150, 175), font=ff(22), anchor="mm")
+    # 二维码
+    qr = qrcode.QRCode(
+        version=None,
+        error_correction=qrcode.constants.ERROR_CORRECT_H,
+        box_size=10,
+        border=2,
+    )
+    qr.add_data(url)
+    qr.make(fit=True)
+    qr_img = qr.make_image(fill_color=(60, 40, 100), back_color=(248, 246, 252))
+    qr_size = 220
+    qr_img = qr_img.resize((qr_size, qr_size))
+    qr_x = (W - qr_size) // 2
+    qr_y = url_y + 10
+    img.paste(qr_img, (qr_x, qr_y))
+
+    # 二维码下方文字
+    f_cta = ff(32, True)
+    d.text((W//2, url_y - 15), "扫 码 开 启 问 诊", fill=(45, 25, 80), font=f_cta, anchor="mm")
+
+    qr_label_y = qr_y + qr_size + 20
+    f_domain = ff(36, True)
+    d.text((W//2, qr_label_y), "本草堂.icu", fill=(60, 40, 100), font=f_domain, anchor="mm")
+    f_url = ff(24)
+    d.text((W//2, qr_label_y + 40), "微信扫码 · 免费体质自测", fill=(140, 125, 165), font=f_url, anchor="mm")
 
     # ═══ 底部 ═══
-    bot_y = url_y + 240
+    bot_y = qr_label_y + 120
     d.line([(120, bot_y), (W-120, bot_y)], fill=(140, 110, 190), width=1)
     d.text((W//2, bot_y+45), "山东本草堂中医诊所", fill=(50, 25, 90), font=ff(32, True), anchor="mm")
     d.text((W//2, bot_y+95), "三代传承 · 正宗中医   |   微信搜「本草堂」", fill=(110, 80, 160), font=ff(24), anchor="mm")
@@ -142,5 +157,5 @@ def create(url: str):
     return path
 
 if __name__ == "__main__":
-    u = sys.argv[1] if len(sys.argv) > 1 else "https://legal-eels-find.loca.lt"
+    u = sys.argv[1] if len(sys.argv) > 1 else "https://eleven-trains-kiss.loca.lt"
     create(u)

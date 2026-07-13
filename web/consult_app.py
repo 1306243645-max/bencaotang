@@ -1,7 +1,7 @@
 """本草堂 · AI问诊小程序页面
 
 独立页面，适合微信内置浏览器和手机访问
-访问: http://bore.pub:9167/consult_app
+访问: https://eleven-trains-kiss.loca.lt/consult_app
 """
 
 import sys

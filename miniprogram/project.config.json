@@ -1,5 +1,5 @@
 {
-  "description": "妙手堂中医诊所小程序",
+  "description": "本草堂中医诊所 · AI智能问诊小程序",
   "packOptions": { "ignore": [], "include": [] },
   "setting": {
     "urlCheck": false,
@@ -16,6 +16,6 @@
   "compileType": "miniprogram",
   "libVersion": "3.3.4",
   "appid": "YOUR_APPID_HERE",
-  "projectname": "miaoshou-tang",
+  "projectname": "bencaotang-tcm",
   "condition": {}
 }

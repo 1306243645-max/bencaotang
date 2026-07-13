@@ -17,7 +17,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 CLINIC = {
     "name": "本草堂中医诊所", "phone": "18254191315",
-    "wechat": "18254191315", "web": "http://172.20.21.34:8501",
+    "wechat": "18254191315", "web": "https://eleven-trains-kiss.loca.lt",
 }
 
 # ── 关键词自动回复 ────────────────────────────────────────

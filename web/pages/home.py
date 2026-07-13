@@ -25,7 +25,7 @@ def render():
     """, unsafe_allow_html=True)
 
     # 访问方式
-    st.info(f"🔗 {t('本草堂访问地址','Find us at')}: https://new-states-yell.loca.lt | {t('微信搜','WeChat')}: 本草堂 | 📞 18254191315")
+    st.info(f"🔗 {t('本草堂访问地址','Find us at')}: https://eleven-trains-kiss.loca.lt | {t('微信搜','WeChat')}: 本草堂 | 📞 18254191315")
 
     st.markdown(f"### {t('本堂特色','Our Heritage')}")
     c1, c2, c3 = st.columns(3)

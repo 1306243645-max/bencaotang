@@ -1,1 +1,0 @@
-<web-view src="{{webUrl}}?page=recipes"></web-view>

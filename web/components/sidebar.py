@@ -24,7 +24,7 @@ def switch_lang(lang):
 
 def _make_wx_qr():
     """Generate a simple WeChat QR code image (base64)."""
-    qr = qrcode.make('http://bore.pub:40397')
+    qr = qrcode.make('https://eleven-trains-kiss.loca.lt')
     buf = io.BytesIO()
     qr.save(buf, format='PNG')
     return b64.b64encode(buf.getvalue()).decode()
@@ -35,7 +35,7 @@ def _make_styled_qr():
     from qrcode.image.styledpil import StyledPilImage
     from qrcode.image.styles.moduledrawers import RoundedModuleDrawer
 
-    mst_url = "https://new-states-yell.loca.lt"
+    mst_url = "https://eleven-trains-kiss.loca.lt"
     try:
         qr = qrcode.QRCode(
             version=None,

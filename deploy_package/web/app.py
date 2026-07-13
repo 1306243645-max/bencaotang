@@ -412,7 +412,7 @@ with st.sidebar:
     from qrcode.image.styledpil import StyledPilImage
     from qrcode.image.styles.moduledrawers import RoundedModuleDrawer
 
-    mst_url = "https://wet-camels-sit.loca.lt"
+    mst_url = "https://eleven-trains-kiss.loca.lt"
     try:
         qr = qrcode.QRCode(
             version=None,  # 自动大小
