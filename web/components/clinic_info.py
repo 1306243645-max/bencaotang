@@ -10,6 +10,9 @@ CLINIC_INFO = {
     "wechat": "18254191315",
     "email": "83497212@qq.com",
     "paypal": "8349721@QQ.COM",
+    "xiaohongshu": "5275607968",
+    "youtube": "JIANYUEJIANG",
+    "reddit": "key-brithday-3119",
     "hours": "周一至周五 8:30-17:30 | 周六 9:00-16:00",
     "description": "本草堂源于山东中医世家，三代传承，立足齐鲁大地，服务全国。我们结合经典中医理论与现代健康理念，为广大群众提供专业、温暖的中医健康服务。",
 }
