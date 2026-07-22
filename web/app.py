@@ -1,4 +1,4 @@
-"""山东本草堂中医诊所 · BenCao Tang TCM Clinic — 官网"""
+"""山东妙手堂中医诊所 · MiaoShou Tang TCM Clinic — 官网"""
 
 import sys
 from pathlib import Path
@@ -15,7 +15,7 @@ from web.components.sidebar import render_sidebar
 
 # ── 页面配置 ──────────────────────────────────────────────
 
-st.set_page_config(page_title="本草堂中医诊所", page_icon="🌿", layout="wide")
+st.set_page_config(page_title="妙手堂中医诊所", page_icon="🌿", layout="wide")
 
 # ── CSS ───────────────────────────────────────────────────
 
@@ -115,6 +115,6 @@ st.markdown(f"""
     <p style="margin-top:1rem;font-size:0.75rem;">
         ⚠️ {t('本网站 AI 问诊仅供健康教育参考，不构成医疗建议。请咨询 AHPRA 注册中医师。','AI consultation is for educational purposes only. Not medical advice. Consult an AHPRA-registered practitioner.')}
     </p>
-    <p>© 2026 山东本草堂中医诊所</p>
+    <p>© 2026 山东妙手堂中医诊所</p>
 </div>
 """, unsafe_allow_html=True)

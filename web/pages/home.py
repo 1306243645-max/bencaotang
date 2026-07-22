@@ -1,4 +1,4 @@
-"""Home page of BenCao Tang TCM Clinic."""
+"""Home page of MiaoShou Tang TCM Clinic."""
 
 import streamlit as st
 
@@ -25,7 +25,7 @@ def render():
     """, unsafe_allow_html=True)
 
     # 访问方式
-    st.info(f"🔗 {t('本草堂访问地址','Find us at')}: https://eleven-trains-kiss.loca.lt | {t('微信搜','WeChat')}: 本草堂 | 📞 18254191315")
+    st.info(f"🔗 {t('妙手堂访问地址','Find us at')}: 妙手堂.icu | {t('微信搜','WeChat')}: 妙手堂 | 📞 18254191315")
 
     st.markdown(f"### {t('本堂特色','Our Heritage')}")
     c1, c2, c3 = st.columns(3)

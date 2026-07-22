@@ -1,4 +1,4 @@
-"""Global sidebar content for BenCao Tang web app."""
+"""Global sidebar content for MiaoShou Tang web app."""
 
 import io
 import streamlit as st
@@ -22,9 +22,12 @@ def switch_lang(lang):
         st.rerun()
 
 
+SITE_URL = "https://妙手堂.icu"
+
+
 def _make_wx_qr():
     """Generate a simple WeChat QR code image (base64)."""
-    qr = qrcode.make('https://eleven-trains-kiss.loca.lt')
+    qr = qrcode.make(SITE_URL)
     buf = io.BytesIO()
     qr.save(buf, format='PNG')
     return b64.b64encode(buf.getvalue()).decode()
@@ -35,7 +38,6 @@ def _make_styled_qr():
     from qrcode.image.styledpil import StyledPilImage
     from qrcode.image.styles.moduledrawers import RoundedModuleDrawer
 
-    mst_url = "https://eleven-trains-kiss.loca.lt"
     try:
         qr = qrcode.QRCode(
             version=None,
@@ -43,7 +45,7 @@ def _make_styled_qr():
             box_size=12,
             border=4,
         )
-        qr.add_data(mst_url)
+        qr.add_data(SITE_URL)
         qr.make(fit=True)
         qr_img = qr.make_image(
             image_factory=StyledPilImage,
@@ -55,7 +57,7 @@ def _make_styled_qr():
         qr_img.save(buf, format="PNG")
         return b64.b64encode(buf.getvalue()).decode()
     except Exception:
-        qr_img = qrcode.make(mst_url)
+        qr_img = qrcode.make(SITE_URL)
         buf = io.BytesIO()
         qr_img.save(buf, format="PNG")
         return b64.b64encode(buf.getvalue()).decode()
@@ -65,21 +67,23 @@ def render_sidebar():
     """Render the global sidebar content."""
     L = st.session_state.lang
 
-    st.markdown("## 本草堂")
-    # 萌宠已移除
-    # 访问地址提示
-    st.caption("🌍 公网: 本草堂.icu")
+    st.markdown("## 🏥 妙手堂")
+    st.caption(f"🌍 {CLINIC_INFO['domain']}")
     st.divider()
-    st.markdown("#### 📱 AI问诊小程序")
+
+    # ── 二维码 ──
+    st.markdown(f"#### 📱 {t('扫码访问妙手堂', 'Scan for MiaoShou Tang')}")
     qb = _make_wx_qr()
     st.markdown(
         f'<div style="text-align:center"><img src="data:image/png;base64,{qb}" width="140"></div>',
         unsafe_allow_html=True,
     )
-    st.caption("📸 微信扫码直接问诊")
+    st.caption(f"📸 {t('微信扫码直接访问', 'Scan to visit')}")
 
     st.caption(t("三代传承 · 正宗中医", "Heritage TCM · Since 1980s"))
     st.divider()
+
+    # ── 语言切换 ──
     col_l, col_r = st.columns(2)
     with col_l:
         if st.button("🇨🇳 中文", use_container_width=True,
@@ -90,41 +94,43 @@ def render_sidebar():
                      type="primary" if L == "en" else "secondary"):
             switch_lang("en")
     st.divider()
+
+    # ── 联系方式 ──
     st.markdown(f"**📞** {CLINIC_INFO['phone']}")
     st.markdown(f"**📧** {CLINIC_INFO['email']}")
     st.markdown(f"**💬** 微信：{CLINIC_INFO['wechat']}")
     st.divider()
+
     # ── 社交媒体矩阵 ──
-    st.markdown("#### 🌐 社交媒体")
-    social_html = """
+    st.markdown(f"#### 🌐 {t('社交媒体', 'Social Media')}")
+    social_html = f"""
     <div style="display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;">
-    <a href="https://weibo.com/本草堂" target="_blank" style="background:#E6162D;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">🧣 微博</a>
-    <a href="https://xiaohongshu.com/本草堂" target="_blank" style="background:#FE2C55;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">📕 小红书</a>
-    <a href="https://douyin.com/本草堂" target="_blank" style="background:#111;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">🎵 抖音</a>
-    <a href="https://facebook.com/BenCaoTang" target="_blank" style="background:#1877F2;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">📘 FB</a>
-    <a href="https://instagram.com/bencaotang_tcm" target="_blank" style="background:#E4405F;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">📷 IG</a>
+    <a href="https://xiaohongshu.com/user/profile/{CLINIC_INFO['xiaohongshu']}" target="_blank" style="background:#FE2C55;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">📕 小红书</a>
+    <a href="https://youtube.com/@{CLINIC_INFO['youtube']}" target="_blank" style="background:#FF0000;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">📺 YouTube</a>
+    <a href="https://reddit.com/user/{CLINIC_INFO['reddit']}" target="_blank" style="background:#FF4500;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">🧵 Reddit</a>
     <a href="https://tiktok.com/@bencaotang" target="_blank" style="background:#000;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">🎬 TikTok</a>
+    <a href="https://facebook.com/MiaoShouTang" target="_blank" style="background:#1877F2;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">📘 FB</a>
+    <a href="https://instagram.com/miaoshoutang" target="_blank" style="background:#E4405F;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">📷 IG</a>
     </div>
     """
     st.markdown(social_html, unsafe_allow_html=True)
     st.divider()
-    # ── 本草堂二维码（高容错+白边）──
-    st.markdown(f"#### 📱 {t('扫码打开本草堂', 'Scan for BenCao Tang')}")
+
+    # ── 精美二维码 ──
+    st.markdown(f"#### 📱 {t('扫码打开妙手堂', 'Scan for MiaoShou Tang')}")
     qr_b64_img = _make_styled_qr()
     st.markdown(
         f'<div style="text-align:center;background:white;padding:12px;border-radius:12px;display:inline-block;">'
         f'<img src="data:image/png;base64,{qr_b64_img}" width="180"></div>',
         unsafe_allow_html=True,
     )
-
-    st.caption(f"📱 {t('微信扫码打开本草堂官网', 'Scan with WeChat to open')}")
-    st.caption(f"🔗 {t('公网链接', 'Public URL')}: 本草堂.icu")
-    st.caption(t("💡 扫码不成功？试试截图→微信扫一扫→相册",
+    st.caption(f"🔗 {SITE_URL}")
+    st.caption(t("💡 扫码不成功？截图→微信扫一扫→相册",
                  "💡 Can't scan? Screenshot → WeChat → Album"))
 
-    # 推荐追踪
+    # ── 推荐有礼 ──
     st.divider()
-    st.markdown(f"#### 🎯 {t('推荐有礼', 'Referral Program')}")
+    st.markdown(f"#### 🎁 {t('推荐有礼', 'Referral Program')}")
     if st.session_state.ref:
         st.success(t(f"🎉 来自推荐: {st.session_state.ref}",
                      "🎉 Referred by: " + st.session_state.ref))
@@ -132,4 +138,4 @@ def render_sidebar():
     st.caption(t("每推荐1位好友 → 双方各得免费体质茶1份",
                  "Refer a friend → Both get free tea"))
     st.divider()
-    st.caption("© 2026 山东本草堂中医诊所")
+    st.caption("© 2026 山东妙手堂中医诊所")
