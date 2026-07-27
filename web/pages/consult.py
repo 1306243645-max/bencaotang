@@ -224,45 +224,149 @@ def render():
 
     # --- 体质自测 ---
     with tab_quiz:
-        st.markdown(f"### 📋 {t('体质自测','Constitution Self-Test')}")
-        st.caption(t("1=从不 2=很少 3=有时 4=经常 5=总是","1=Never 2=Rarely 3=Sometimes 4=Often 5=Always"))
+        st.markdown(f"### 📋 {t('中医体质自测','TCM Constitution Self-Test')}")
+
+        # 说明区域
+        with st.expander(t("🧪 什么是体质自测？","🧪 What is this test?"), expanded=False):
+            st.markdown(t("""
+            **中医将人体分为9种体质**，每种体质在饮食、运动、易患病倾向都有不同。
+
+            这个自测基于中华中医药学会《中医体质分类与判定》标准，通过9组简单问题帮你找到自己的体质类型。
+
+            - ⏱️ 耗时：2 分钟
+            - 📊 结果：你的体质雷达图 + AI 个性化调理方案
+            - 🎯 后续：根据体质推荐茶饮、食疗、穴位
+
+            **评分标准**：1=从不 2=偶尔 3=有时 4=经常 5=总是
+            """, """
+            **TCM identifies 9 body constitution types.** Each has different dietary needs, exercise preferences, and health tendencies.
+
+            Based on the official TCM Constitution Classification standard with 9 simple questions.
+
+            - ⏱️ Time: 2 minutes
+            - 📊 Result: Your constitution profile + AI wellness plan
+            - 🎯 Follow-up: Personalized tea, diet, and acupressure
+
+            **Scale**: 1=Never 2=Rarely 3=Sometimes 4=Often 5=Always
+            """))
+
+        st.divider()
+        st.caption(t("评分：1=从不 2=偶尔 3=有时 4=经常 5=总是","Scale: 1=Never 2=Rarely 3=Sometimes 4=Often 5=Always"))
+
         scores = {}
         ctype_keys = list(CONSTITUTION_QUIZ.keys())
+        ctype_emojis = {
+            "平和质": "😊", "气虚质": "😴", "阳虚质": "🥶",
+            "阴虚质": "🔥", "痰湿质": "💧", "湿热质": "🌡️",
+            "气郁质": "😟", "血瘀质": "🟣", "特禀质": "🤧",
+        }
+
+        # 用两列布局紧凑展示
         for idx, ctype in enumerate(ctype_keys):
             qs = CONSTITUTION_QUIZ[ctype]
-            st.markdown(f"**{ctype}**")
+            emoji = ctype_emojis.get(ctype, "📋")
+            st.markdown(f"**{emoji} {ctype}**")
             cols = st.columns(len(qs))
             vals = []
             for i, q in enumerate(qs):
                 safe_key = f"qz_{idx}_{i}"
                 with cols[i]:
-                    vals.append(st.select_slider(q, [1, 2, 3, 4, 5], 3, key=safe_key, label_visibility="collapsed"))
+                    vals.append(st.select_slider(
+                        q, [1, 2, 3, 4, 5], 3,
+                        key=safe_key, label_visibility="collapsed"
+                    ))
             scores[ctype] = vals
 
-        c_a, c_b = st.columns([1, 4])
+        st.divider()
+
+        c_a, c_b, c_c = st.columns([2, 2, 3])
         with c_a:
-            if st.button(t("📊 查看结果","📊 View Results"), use_container_width=True, type="primary"):
+            if st.button(t("📊 查看我的体质","📊 View My Results"), use_container_width=True, type="primary"):
                 results = {ct: round(sum(v)/len(v), 1) for ct, v in scores.items()}
                 sorted_r = sorted(results.items(), key=lambda x: x[1], reverse=True)
-                st.divider()
                 top = sorted_r[0]
-                st.success(f"**{top[0]}** ({top[1]}/5)")
+                second = sorted_r[1] if len(sorted_r) > 1 else None
+
+                st.divider()
+                st.balloons()
+
+                # 主打体质大卡片
+                emoji = ctype_emojis.get(top[0], "📋")
+                st.markdown(f"""
+                <div style="text-align:center;padding:2rem;background:linear-gradient(135deg,#EDE8F5,#F5F2FA);border-radius:16px;border:2px solid #B5A8D4;margin-bottom:1rem;">
+                    <div style="font-size:3rem;">{emoji}</div>
+                    <h2 style="color:#3C2864;margin:0.3rem 0;">{t('你的体质：','Your Constitution: ')}{top[0]}</h2>
+                    <p style="font-size:1.2rem;color:#666;">{t('得分','Score')}: {top[1]}/5</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+                # 雷达图式的进度条
+                st.markdown(f"#### {t('📊 九种体质对比','📊 All 9 Types Comparison')}")
                 for ct, sc in sorted_r:
-                    st.markdown(f"**{ct}**: {sc}/5")
-                    st.progress(sc/5)
+                    ratio = sc / 5.0
+                    color = "#2d6a4f" if sc >= 3.5 else ("#e67e22" if sc >= 2.5 else "#999")
+                    st.markdown(f"""
+                    <div style="display:flex;align-items:center;margin:0.3rem 0;">
+                        <span style="width:70px;font-size:0.85rem;">{ct}</span>
+                        <div style="flex:1;height:18px;background:#eee;border-radius:9px;overflow:hidden;">
+                            <div style="width:{ratio*100}%;height:100%;background:{color};border-radius:9px;"></div>
+                        </div>
+                        <span style="width:40px;text-align:right;font-weight:bold;">{sc}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+                # AI 分析
                 top_types = [f"{ct}:{s}" for ct, s in sorted_r if s >= 3.0]
-                with st.spinner(t("分析中...","Analyzing...")):
-                    resp = st.session_state.agent.chat(
-                        f"用户体质自测：{', '.join(top_types)}。请给出体质特点、食疗建议（澳洲食材）、穴位按摩、生活调整。附澳洲免责。")
+                with st.spinner(t("🤖 AI正在生成你的体质调理方案...","🤖 AI generating your wellness plan...")):
+                    resp = st.session_state.agent.chat(f"""
+用户刚完成中医体质自测，结果如下：
+主要体质：{top[0]}（{top[1]}/5）
+次要体质：{second[0]}（{second[1]}/5）{f'存在' if second else ''}
+完整排名：{', '.join(top_types)}
+
+请用生活化的语言给出个性化调理方案。严格按以下格式输出：
+
+## 🎯 你的体质画像
+用1-2句通俗比喻形容这个体质的特点（比如「你就像一个火力不足的小火炉」）
+
+## 📋 体质特点
+3个最典型的表现
+
+## 🍳 食疗方案
+- 推荐食材（3-5种，优先超市常见食材）
+- 禁忌食物（3种）
+- 1个简单食疗方（含克数+做法）
+
+## 💆 穴位按摩
+2个关键穴位（含取穴方法+按摩技巧+时长）
+
+## 🍵 茶饮推荐
+1款匹配体质的茶（含配方+冲泡方法）
+
+## 🏃 运动建议
+适合的运动类型和强度
+
+## ⚠️ 注意事项
+2条关键提醒
+
+格式简洁，用emoji分段，易于阅读。""")
                     st.markdown(resp.content)
-                st.session_state.messages.append({"role": "user", "content": f"📋 体质自测: {', '.join(top_types)}"})
+
+                st.session_state.messages.append({"role": "user", "content": f"📋 体质自测完成: {top[0]}({top[1]}/5)"})
                 st.session_state.messages.append({"role": "assistant", "content": resp.content})
+
         with c_b:
-            if st.button(t("🔄 重置","🔄 Reset"), use_container_width=True):
+            if st.button(t("🔄 全部重置","🔄 Reset All"), use_container_width=True):
                 for ci in range(len(ctype_keys)):
                     for i in range(3):
                         st.session_state.pop(f"qz_{ci}_{i}", None)
                 st.rerun()
+
+        with c_c:
+            st.info(t(
+                "💡 **提示**：如实填写更准确。选择与平时最符合的感觉，不是偶尔出现的情况。",
+                "💡 **Tip**: Answer honestly. Pick what feels most usual — not occasional feelings."
+            ))
 
     # --- 金锁玉关风水咨询 ---
     with tab_fengshui:
