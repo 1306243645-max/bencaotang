@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>妙手堂中医诊所 · MiaoShou Tang TCM</title>
+<style>
+:root {
+  --ink: #2C1810;
+  --gold: #C9A96E;
+  --cream: #F8F4EC;
+  --jade: #5B8C5A;
+  --red: #C0392B;
+  --paper: #FFFEF9;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Microsoft YaHei','PingFang SC',sans-serif; background:var(--paper); color:var(--ink); line-height:1.8; }
+nav { background:var(--ink); color:white; padding:1rem 2rem; position:sticky; top:0; z-index:100; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+nav .brand { font-size:1.5rem; font-weight:bold; color:var(--gold); }
+nav a { color:white; text-decoration:none; margin:0 1rem; font-size:0.95rem; }
+nav a:hover { color:var(--gold); }
+.hero { text-align:center; padding:6rem 2rem; background:linear-gradient(135deg,var(--ink),#3C2820,var(--ink)); color:white; }
+.hero h1 { font-size:3rem; color:var(--gold); margin-bottom:1rem; }
+.hero p { font-size:1.2rem; opacity:0.85; max-width:600px; margin:0 auto; }
+.hero .btn { display:inline-block; margin-top:2rem; padding:0.8rem 2.5rem; background:var(--gold); color:var(--ink); border-radius:30px; text-decoration:none; font-weight:bold; font-size:1.1rem; }
+.section { max-width:1100px; margin:0 auto; padding:4rem 2rem; }
+.section h2 { text-align:center; font-size:2rem; color:var(--ink); margin-bottom:0.5rem; }
+.section .subtitle { text-align:center; color:#888; margin-bottom:3rem; }
+.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; }
+.card { background:white; border-radius:12px; padding:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); text-align:center; transition:transform 0.2s; }
+.card:hover { transform:translateY(-4px); }
+.card .icon { font-size:2.5rem; margin-bottom:1rem; }
+.card h3 { margin-bottom:0.5rem; color:var(--ink); }
+.card p { color:#666; font-size:0.9rem; }
+.quiz { background:var(--cream); border-radius:16px; padding:2rem; margin:2rem 0; }
+.quiz .q-group { margin-bottom:1.5rem; }
+.quiz .q-group h4 { margin-bottom:0.5rem; }
+.quiz .q-group label { margin-right:1.5rem; cursor:pointer; }
+.quiz button { background:var(--ink); color:var(--gold); border:none; padding:0.8rem 2.5rem; border-radius:30px; cursor:pointer; font-size:1rem; font-weight:bold; }
+.quiz button:hover { opacity:0.9; }
+#quiz-result { display:none; background:white; border-radius:12px; padding:2rem; margin-top:2rem; text-align:center; }
+.contact-info { text-align:center; font-size:1.1rem; }
+.contact-info p { margin:0.5rem 0; }
+.social { display:flex; justify-content:center; gap:1rem; margin-top:2rem; flex-wrap:wrap; }
+.social a { background:var(--ink); color:var(--gold); padding:0.5rem 1.5rem; border-radius:20px; text-decoration:none; font-size:0.9rem; }
+footer { background:var(--ink); color:white; text-align:center; padding:2rem; margin-top:4rem; font-size:0.9rem; }
+.bar { display:flex; align-items:center; gap:0.5rem; margin:0.3rem 0; }
+.bar .label { width:70px; text-align:right; font-size:0.85rem; }
+.bar .track { flex:1; height:16px; background:#eee; border-radius:8px; overflow:hidden; }
+.bar .fill { height:100%; border-radius:8px; transition:width 0.5s; }
+.bar .score { width:40px; font-weight:bold; }
+.hero-stats { display:flex; justify-content:center; gap:3rem; margin-top:2rem; }
+.hero-stat { text-align:center; }
+.hero-stat .num { font-size:2rem; color:var(--gold); font-weight:bold; }
+@media (max-width:768px) {
+  .grid3,.grid4 { grid-template-columns:1fr; }
+  .hero h1 { font-size:2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<nav>
+  <span class="brand">🌿 妙手堂</span>
+  <div>
+    <a href="#home">首页</a>
+    <a href="#services">特色</a>
+    <a href="#quiz">体质自测</a>
+    <a href="#culture">中医出海</a>
+    <a href="#contact">联系</a>
+  </div>
+</nav>
+
+<!-- 首页 -->
+<section class="hero" id="home">
+  <h1>妙手仁心 · 本草济世</h1>
+  <p>山东三代中医世家 · AI智慧问诊 · 让正宗中医触手可及</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">3</div>代传承</div>
+    <div class="hero-stat"><div class="num">9</div>种体质辨识</div>
+    <div class="hero-stat"><div class="num">20+</div>知识库</div>
+    <div class="hero-stat"><div class="num">24/7</div>在线服务</div>
+  </div>
+  <a href="#quiz" class="btn">免费测体质 →</a>
+</section>
+
+<!-- 特色 -->
+<section class="section" id="services">
+  <h2>本堂特色</h2>
+  <p class="subtitle">三代中医传承 · 结合现代AI技术</p>
+  <div class="grid3">
+    <div class="card">
+      <div class="icon">🌿</div>
+      <h3>三代中医传承</h3>
+      <p>山东中医世家，三代人专注中医诊疗，将正宗的中华医道带给世界。</p>
+    </div>
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>AI + 中医</h3>
+      <p>自研AI问诊系统，24/7在线健康咨询，智能体质辨识，让中医触手可及。</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌍</div>
+      <h3>全球服务</h3>
+      <p>跨境养生产品，PayPal国际收款，海外直邮，让世界用上正宗中药。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 体质自测 -->
+<section class="section" id="quiz">
+  <h2>🧪 中医体质自测</h2>
+  <p class="subtitle">2分钟 · 9种体质 · 精准辨识</p>
+
+  <div class="quiz">
+    <p style="text-align:center;margin-bottom:1rem;">1=从不 2=偶尔 3=有时 4=经常 5=总是</p>
+    <div id="quiz-questions"></div>
+    <div style="text-align:center;margin-top:2rem;">
+      <button onclick="showResult()">📊 查看我的体质</button>
+    </div>
+  </div>
+
+  <div id="quiz-result">
+    <div style="font-size:4rem;" id="result-emoji"></div>
+    <h2 id="result-type" style="color:var(--ink);"></h2>
+    <p id="result-score"></p>
+    <div id="result-bars" style="max-width:500px;margin:1rem auto;"></div>
+    <p style="margin-top:1rem;color:#888;">微信搜「妙手堂」获取完整AI体质报告和调理方案</p>
+  </div>
+</section>
+
+<!-- 中医出海 -->
+<section class="section" id="culture">
+  <h2>🌊 中医文化出海</h2>
+  <p class="subtitle">以文化为舟 · 让中医走向世界</p>
+  <div class="grid4">
+    <div class="card"><div class="icon">📕</div><h3>小红书</h3><p>ID: 5275607968</p></div>
+    <div class="card"><div class="icon">🎵</div><h3>TikTok</h3><p>@bencaotang</p></div>
+    <div class="card"><div class="icon">📺</div><h3>YouTube</h3><p>@JIANYUEJIANG</p></div>
+    <div class="card"><div class="icon">🧵</div><h3>Reddit</h3><p>u/key-brithday-3119</p></div>
+  </div>
+</section>
+
+<!-- 联系 -->
+<section class="section" id="contact">
+  <h2>联系我们</h2>
+  <p class="subtitle">山东妙手堂中医诊所</p>
+  <div class="contact-info">
+    <p>📍 山东省济南市历下区经十路123号</p>
+    <p>📞 +86 18254191315</p>
+    <p>📧 83497212@qq.com</p>
+    <p>💬 微信：18254191315</p>
+    <p>💳 PayPal：8349721@QQ.COM</p>
+    <p>🕐 周一至周五 8:30-17:30 | 周六 9:00-16:00</p>
+    <p>🌍 妙手堂.icu</p>
+  </div>
+  <div class="social">
+    <a href="https://xiaohongshu.com/user/profile/5275607968">📕 小红书</a>
+    <a href="https://youtube.com/@JIANYUEJIANG">📺 YouTube</a>
+    <a href="https://reddit.com/user/key-brithday-3119">🧵 Reddit</a>
+    <a href="https://tiktok.com/@bencaotang">🎬 TikTok</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 山东妙手堂中医诊所 · MiaoShou Tang TCM Clinic</p>
+  <p>妙手仁心 · 本草济世 | 三代传承 · 正宗中医</p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;">⚠️ 本网站内容仅供健康教育参考，不构成医疗建议。</p>
+</footer>
+
+<script>
+// 体质测试数据
+const quiz = {
+  "😊 平和质": ["精力充沛","睡眠质量好","适应能力强"],
+  "😴 气虚质": ["容易疲劳气短","说话声音低弱","容易出虚汗"],
+  "🥶 阳虚质": ["手脚发凉","比一般人怕冷","吃凉的不舒服"],
+  "🔥 阴虚质": ["手心脚心发热","口干咽燥","容易失眠盗汗"],
+  "💧 痰湿质": ["身体沉重不爽快","腹部肥胖松软","舌苔厚腻"],
+  "🌡️ 湿热质": ["面部出油长痘","口苦口臭","大便粘滞"],
+  "😟 气郁质": ["情绪低落焦虑","容易胸闷叹气","对事情敏感"],
+  "🟣 血瘀质": ["身上容易瘀青","面色偏暗有斑","容易忘事"],
+  "🤧 特禀质": ["容易过敏","过敏性鼻炎哮喘","皮肤起荨麻疹"],
+};
+
+const advice = {
+  "平和质": "恭喜！你拥有最理想的体质。保持规律作息、均衡饮食、适度运动即可。",
+  "气虚质": "多吃黄芪、红枣、山药。推荐黄芪红枣茶（黄芪10g+红枣5颗煮水）。避免过度劳累。",
+  "阳虚质": "多吃生姜、羊肉、韭菜。推荐姜枣茶（生姜5片+红枣5颗+红糖，早上喝）。多晒太阳。",
+  "阴虚质": "多吃百合、银耳、梨。推荐百合银耳羹。少吃辛辣，避免熬夜。",
+  "痰湿质": "多吃陈皮、茯苓、薏米。推荐陈皮茯苓茶（陈皮1瓣+茯苓10g+炒薏米15g煮水）。多运动出汗。",
+  "湿热质": "多吃冬瓜、绿豆、苦瓜。推荐菊花金银花茶。少吃油腻甜食，戒酒。",
+  "气郁质": "多吃玫瑰花、佛手、柑橘。推荐玫瑰花茶。多做户外运动，保持心情舒畅。",
+  "血瘀质": "多吃山楂、黑豆、醋。推荐玫瑰花山楂茶。适量运动促进血液循环。",
+  "特禀质": "避免过敏原，增强免疫力。推荐黄芪防风茶。注意季节变化。",
+};
+
+// 渲染题目
+const qDiv = document.getElementById('quiz-questions');
+for (const [type, questions] of Object.entries(quiz)) {
+  let html = `<div class="q-group"><h4>${type}</h4>`;
+  for (let i = 0; i < questions.length; i++) {
+    html += `<div style="display:inline-block;margin:0.3rem 0.8rem;font-size:0.85rem;">
+      ${questions[i]}:
+      <select class="q-select" data-type="${type}" data-idx="${i}">
+        <option value="1">1</option><option value="2">2</option>
+        <option value="3" selected>3</option><option value="4">4</option><option value="5">5</option>
+      </select>
+    </div>`;
+  }
+  html += '</div>';
+  qDiv.innerHTML += html;
+}
+
+// 结果计算
+function showResult() {
+  const scores = {};
+  document.querySelectorAll('.q-select').forEach(sel => {
+    const type = sel.dataset.type;
+    if (!scores[type]) scores[type] = 0;
+    scores[type] += parseInt(sel.value);
+  });
+
+  const results = Object.entries(scores).map(([k,v]) => [k, +(v/3).toFixed(1)]);
+  results.sort((a,b) => b[1] - a[1]);
+
+  const top = results[0];
+  const emoji = top[0].slice(0,2);
+
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-type').textContent = '你的体质：' + top[0].slice(3);
+  document.getElementById('result-score').textContent = '得分：' + top[1] + '/5';
+
+  let bars = '';
+  const colors = ['#2d6a4f','#3a8a63','#5b8c5a','#e67e22','#e67e22','#999','#999','#999','#999'];
+  results.forEach(([k,v], i) => {
+    const pct = (v/5)*100;
+    bars += `<div class="bar"><span class="label">${k.slice(3)}</span><div class="track"><div class="fill" style="width:${pct}%;background:${colors[i]}"></div></div><span class="score">${v}</span></div>`;
+  });
+  document.getElementById('result-bars').innerHTML = bars;
+
+  // 建议
+  const key = results[0][0].slice(3);
+  document.getElementById('result-bars').innerHTML +=
+    `<div style="background:var(--cream);padding:1rem;border-radius:8px;margin-top:1rem;text-align:left;">` +
+    `<strong>🍵 调理建议：</strong>${advice[key] || ''}<br><br>` +
+    `<small>👉 微信搜「妙手堂」获取完整AI体质调理方案</small></div>`;
+
+  document.getElementById('quiz-result').style.display = 'block';
+  document.getElementById('quiz-result').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
