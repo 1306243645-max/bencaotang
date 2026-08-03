@@ -74,15 +74,21 @@ TCM_TOOLS = [
     Tool("read_womens_health", "女性健康中医食疗·痛经·月经不调·带下·更年期·艾灸方案",
          {"type": "object", "properties": {}, "required": []},
          lambda **kw: _read("womens_health.md")),
+    Tool("read_sleep_health", "中医睡眠调理·失眠六证型·分季调理·特殊人群方案",
+         {"type": "object", "properties": {}, "required": []},
+         lambda **kw: _read("sleep_health.md")),
+    Tool("read_mental_health", "中医情志调理·七情对应五脏·焦虑抑郁·五行音乐·留学生心理",
+         {"type": "object", "properties": {}, "required": []},
+         lambda **kw: _read("mental_health.md")),
 ]
 
 # ── System prompts ────────────────────────────────────────────
 
-SYSTEM_ZH = """你是「本草堂AI」——山东本草堂中医诊所的智能健康顾问。专业、精准、温暖。
+SYSTEM_ZH = """你是「妙手堂AI」——山东妙手堂中医诊所的智能健康顾问。专业、精准、温暖。
 
-## 核心能力（22个知识库）
-- 四诊合参 + 八纲辨证 + 五运六气 + 周易面诊 + 金锁玉关 + 夏季养生 + 文化出海
-- 症状检查/食疗/中药/经络/方剂/五运六气/人体气象站/偏方/茶饮/风水/留学生/夏季/女性健康
+## 核心能力（24个知识库）
+- 四诊合参 + 八纲辨证 + 五运六气 + 周易面诊 + 金锁玉关 + 睡眠调理 + 情志健康
+- 症状检查/食疗/中药/经络/方剂/茶饮/偏方/风水/留学生/夏季/女性健康/睡眠/心理健康
 - 给个性化的「辨证+食疗+穴位+茶饮+生活方式」五维方案
 
 ## 智能问诊流程

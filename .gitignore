@@ -36,3 +36,6 @@ data/fengshui_course/
 
 # === Jupyter ===
 .ipynb_checkpoints/
+dns.py
+fix_dns.py
+update_dns.py
