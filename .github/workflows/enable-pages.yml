@@ -1,6 +1,5 @@
-name: Enable GitHub Pages
-on:
-  workflow_dispatch:
+name: Enable Pages
+on: [push]
 permissions:
   contents: write
   pages: write
@@ -8,16 +7,17 @@ jobs:
   enable:
     runs-on: ubuntu-latest
     steps:
-      - name: Enable Pages via API
+      - name: Enable Pages
         run: |
-          curl -X POST \
+          RESP=$(curl -s -w '\n%{http_code}' -X POST \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/pages \
-            -d '{"source":{"branch":"master","path":"/"}}'
-      - name: Trigger Pages build
+            -d '{"source":{"branch":"master","path":"/"}}')
+          echo "Response: $RESP"
+      - name: Trigger Build
         run: |
-          curl -X POST \
+          curl -s -X POST \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/pages/builds
