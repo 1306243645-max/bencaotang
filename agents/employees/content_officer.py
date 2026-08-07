@@ -26,6 +26,10 @@ CONTENT_TOOLS = [
          lambda **kw: _read("summer_health_2026")),
     Tool("kb_womens", "女性健康中医食疗", {"type":"object","properties":{},"required":[]},
          lambda **kw: _read("womens_health")),
+    Tool("kb_sleep", "中医睡眠调理·失眠六证型", {"type":"object","properties":{},"required":[]},
+         lambda **kw: _read("sleep_health")),
+    Tool("kb_mental", "中医情志调理·焦虑抑郁", {"type":"object","properties":{},"required":[]},
+         lambda **kw: _read("mental_health")),
 ]
 
 # ── 内容官系统提示词 ──────────────────────────────────
