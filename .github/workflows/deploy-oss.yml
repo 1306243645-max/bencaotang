@@ -1,0 +1,73 @@
+name: Deploy to Alibaba Cloud OSS
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup ossutil
+        run: |
+          wget -q https://gosspublic.alicdn.com/ossutil/1.7.19/ossutil64 -O ossutil
+          chmod +x ossutil
+          ./ossutil config \
+            --access-key-id ${{ secrets.ALIBABA_ACCESS_KEY_ID }} \
+            --access-key-secret ${{ secrets.ALIBABA_ACCESS_KEY_SECRET }} \
+            --endpoint oss-cn-zhangjiakou.aliyuncs.com \
+            --language CH
+
+      - name: Upload website to OSS
+        run: |
+          # 上传 index.html（主站首页）
+          ./ossutil cp index.html oss://miaoshoutang/index.html \
+            --acl public-read \
+            --content-type "text/html; charset=utf-8" \
+            --meta "Cache-Control:max-age=3600" \
+            -f
+
+          # 上传 404.html（自定义错误页）
+          ./ossutil cp 404.html oss://miaoshoutang/404.html \
+            --acl public-read \
+            --content-type "text/html; charset=utf-8" \
+            -f
+
+          # 上传 robots.txt
+          ./ossutil cp robots.txt oss://miaoshoutang/robots.txt \
+            --acl public-read \
+            --content-type "text/plain; charset=utf-8" \
+            -f
+
+          # 上传 sitemap.xml
+          ./ossutil cp sitemap.xml oss://miaoshoutang/sitemap.xml \
+            --acl public-read \
+            --content-type "application/xml; charset=utf-8" \
+            -f
+
+      - name: Set bucket website config
+        run: |
+          # 设置静态网站托管
+          cat > website.xml << 'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <WebsiteConfiguration>
+            <IndexDocument>
+              <Suffix>index.html</Suffix>
+            </IndexDocument>
+            <ErrorDocument>
+              <Key>404.html</Key>
+            </ErrorDocument>
+          </WebsiteConfiguration>
+          EOF
+          ./ossutil website --method put oss://miaoshoutang website.xml
+
+      - name: Report deployment
+        run: |
+          echo "============================================"
+          echo "  ✅ 网站已部署到阿里云 OSS"
+          echo "  📍 OSS 地址: http://miaoshoutang.oss-cn-zhangjiakou.aliyuncs.com/"
+          echo "  🌍 自定义域名: https://妙手堂.icu"
+          echo "  (请确保 DNS CNAME 指向 OSS bucket 域名)"
+          echo "============================================"
