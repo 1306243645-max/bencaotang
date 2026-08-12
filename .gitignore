@@ -39,3 +39,5 @@ data/fengshui_course/
 dns.py
 fix_dns.py
 update_dns.py
+.aliyun_creds
+*.aliyun_creds
