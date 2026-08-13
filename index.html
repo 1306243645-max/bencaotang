@@ -141,15 +141,39 @@ footer .footer-brand { font-size:1.5rem; font-weight:700; color:var(--gold); mar
 footer p { margin:0.3rem 0; font-size:0.9rem; }
 footer .disclaimer { margin-top:1.5rem; font-size:0.75rem; opacity:0.6; }
 
+/* ── Process (诊疗流程) ── */
+.process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; counter-reset:step; }
+.process-step { background:white; border-radius:var(--radius); padding:2rem 1.5rem; text-align:center; box-shadow:var(--shadow); position:relative; transition:var(--transition); }
+.process-step:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+.process-step .step-icon { font-size:2.5rem; display:block; margin-bottom:1rem; }
+.process-step .step-num { position:absolute; top:1rem; left:1.2rem; width:28px; height:28px; background:var(--gold); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; }
+.process-step h3 { font-size:1.05rem; margin-bottom:0.6rem; }
+.process-step p { font-size:0.85rem; color:var(--gray); line-height:1.6; }
+
+/* ── Seasonal (节气养生) ── */
+.seasonal-banner { background:linear-gradient(135deg, #2d1b12 0%, #3d2a1a 50%, #2d1b12 100%); border-radius:var(--radius); padding:2.5rem; color:var(--gold-light); display:flex; align-items:center; gap:2rem; box-shadow:var(--shadow-lg); position:relative; overflow:hidden; }
+.seasonal-banner::before { content:''; position:absolute; top:-50%; right:-10%; width:300px; height:300px; background:radial-gradient(circle, rgba(201,169,110,0.15) 0%, transparent 70%); border-radius:50%; }
+.seasonal-banner .s-term { font-size:3.5rem; flex-shrink:0; }
+.seasonal-banner .s-content { flex:1; position:relative; }
+.seasonal-banner .s-title { font-size:1.4rem; font-weight:700; color:var(--gold); margin-bottom:0.5rem; }
+.seasonal-banner .s-desc { font-size:0.95rem; line-height:1.8; opacity:0.9; }
+.seasonal-banner .s-tip { display:inline-block; margin-top:1rem; background:rgba(201,169,110,0.2); padding:0.4rem 1rem; border-radius:20px; font-size:0.85rem; color:var(--gold); }
+
+/* ── Floating Consult Button ── */
+#float-consult { position:fixed; bottom:5.5rem; right:1.5rem; background:var(--jade); color:white; border:none; border-radius:30px; padding:0.8rem 1.4rem; cursor:pointer; font-size:0.95rem; font-weight:700; box-shadow:0 6px 24px rgba(91,140,90,0.4); z-index:99; display:flex; align-items:center; gap:0.5rem; transition:var(--transition); animation:floatPulse 2.5s ease-in-out infinite; }
+#float-consult:hover { transform:translateY(-3px); box-shadow:0 10px 32px rgba(91,140,90,0.5); animation:none; }
+@keyframes floatPulse { 0%,100% { box-shadow:0 6px 24px rgba(91,140,90,0.4); } 50% { box-shadow:0 6px 24px rgba(91,140,90,0.6),0 0 0 8px rgba(91,140,90,0.1); } }
+
 /* ── Back to Top ── */
 #back-to-top { position:fixed; bottom:2rem; right:2rem; width:48px; height:48px; background:var(--ink); color:var(--gold); border:none; border-radius:50%; cursor:pointer; font-size:1.3rem; box-shadow:var(--shadow-lg); z-index:99; opacity:0; transform:translateY(20px); transition:var(--transition); pointer-events:none; }
 #back-to-top.show { opacity:1; transform:translateY(0); pointer-events:auto; }
 #back-to-top:hover { background:var(--gold); color:var(--ink); }
 
 /* ── Responsive ── */
-@media (max-width:1024px) { .grid4 { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:1024px) { .grid4 { grid-template-columns:repeat(2,1fr); } .process-steps { grid-template-columns:repeat(2,1fr); } }
 @media (max-width:768px) {
-  .grid3,.grid4,.contact-grid,.grid2 { grid-template-columns:1fr; }
+  .grid3,.grid4,.contact-grid,.grid2,.process-steps { grid-template-columns:1fr; }
+  .seasonal-banner { flex-direction:column; text-align:center; }
   .hero h1 { font-size:2.2rem; }
   .hero-stats { gap:1.5rem; flex-wrap:wrap; }
   .hero-stat .num { font-size:2rem; }
@@ -250,6 +274,42 @@ footer .disclaimer { margin-top:1.5rem; font-size:0.75rem; opacity:0.6; }
 </section>
 </div>
 
+<!-- Process -->
+<section class="section" id="process">
+  <div class="section-header fade-in">
+    <span class="emoji">🔄</span>
+    <h2>诊疗流程</h2>
+    <div class="line"></div>
+    <p>简单四步，开启您的健康调理之旅</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step fade-in">
+      <span class="step-num">1</span>
+      <span class="step-icon">📝</span>
+      <h3>预约咨询</h3>
+      <p>电话/微信预约，描述您的健康状况与诉求，客服为您匹配合适的时间与医师。</p>
+    </div>
+    <div class="process-step fade-in">
+      <span class="step-num">2</span>
+      <span class="step-icon">🩺</span>
+      <h3>四诊合参</h3>
+      <p>望闻问切 + AI 体质辨识双重辨证，结合出生年月与五运六气，全面了解您的体质。</p>
+    </div>
+    <div class="process-step fade-in">
+      <span class="step-num">3</span>
+      <span class="step-icon">📋</span>
+      <h3>个性化方案</h3>
+      <p>为您定制「食疗+茶饮+穴位+运动+情志」五维调理方案，一人一方，精准匹配。</p>
+    </div>
+    <div class="process-step fade-in">
+      <span class="step-num">4</span>
+      <span class="step-icon">🌱</span>
+      <h3>跟踪调养</h3>
+      <p>定期回访跟踪调理效果，根据体质变化动态调整方案，守护您的长期健康。</p>
+    </div>
+  </div>
+</section>
+
 <!-- Quiz -->
 <section class="section" id="quiz">
   <div class="section-header fade-in">
@@ -299,6 +359,24 @@ footer .disclaimer { margin-top:1.5rem; font-size:0.75rem; opacity:0.6; }
   </div>
 </section>
 </div>
+
+<!-- Seasonal -->
+<section class="section" id="seasonal">
+  <div class="section-header fade-in">
+    <span class="emoji">🍂</span>
+    <h2>节气养生</h2>
+    <div class="line"></div>
+    <p>顺应天时 · 因时养生</p>
+  </div>
+  <div class="seasonal-banner fade-in">
+    <span class="s-term" id="s-term-emoji">🍂</span>
+    <div class="s-content">
+      <div class="s-title" id="s-term-title">立秋养生</div>
+      <div class="s-desc" id="s-term-desc">加载中…</div>
+      <span class="s-tip" id="s-term-tip">🌿 顺应节气 · 调养身心</span>
+    </div>
+  </div>
+</section>
 
 <!-- Products -->
 <section class="section" id="products">
@@ -414,6 +492,9 @@ footer .disclaimer { margin-top:1.5rem; font-size:0.75rem; opacity:0.6; }
   <p>📞 +86 18254191315 | 📧 83497212@qq.com | 🌍 妙手堂.icu</p>
   <p class="disclaimer">⚠️ 本网站内容仅供健康教育参考，不构成医疗建议。如有健康问题，请咨询专业医师。<br>© 2026 山东妙手堂中医诊所 | 鲁ICP备XXXXXXXX号</p>
 </footer>
+
+<!-- Floating Consult Button -->
+<a id="float-consult" href="#contact" aria-label="免费咨询">💬 免费咨询</a>
 
 <!-- Back to Top -->
 <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到顶部">↑</button>
@@ -545,6 +626,59 @@ window.addEventListener('resize', () => {
     document.querySelector('.hamburger').textContent = '☰';
   }
 });
+
+// ── 节气养生 (Solar Term) ──
+const solarTerms = [
+  { name:"小寒", m:1, d:5,  emoji:"❄️", desc:"一年中最冷时节开始，注意保暖防寒，尤其护住腰腹与关节。", tip:"温补阳气 · 早睡晚起" },
+  { name:"大寒", m:1, d:20, emoji:"🧊", desc:"寒气至极，宜温补脾肾，为来年春天储备能量。", tip:"健脾温肾 · 适度进补" },
+  { name:"立春", m:2, d:4,  emoji:"🌱", desc:"春气始发，阳气升腾。宜疏肝理气，多踏青舒展，保持心情舒畅。", tip:"疏肝理气 · 早睡早起" },
+  { name:"雨水", m:2, d:19, emoji:"🌧️", desc:"降水渐增，湿气始生。健脾祛湿正当时，少食生冷油腻。", tip:"健脾祛湿 · 护脾胃" },
+  { name:"惊蛰", m:3, d:5,  emoji:"⚡", desc:"春雷惊百虫，阳气大涨。宜舒展筋骨，多户外运动，疏泄肝火。", tip:"疏肝泄火 · 动起来" },
+  { name:"春分", m:3, d:20, emoji:"🌸", desc:"阴阳平衡日，昼夜均分。饮食宜清淡平和，调和阴阳。", tip:"阴阳平衡 · 清淡饮食" },
+  { name:"清明", m:4, d:4,  emoji:"🍃", desc:"气清景明，肝气旺盛。宜养肝柔肝，踏青赏花，舒畅情志。", tip:"养肝柔肝 · 舒畅心情" },
+  { name:"谷雨", m:4, d:20, emoji:"🌾", desc:"雨生百谷，湿气最重。健脾祛湿是关键，推荐薏米红豆汤。", tip:"祛湿健脾 · 薏米红豆" },
+  { name:"立夏", m:5, d:5,  emoji:"☀️", desc:"夏季开始，心气渐旺。宜清心养心，晚睡早起，午休养神。", tip:"养心安神 · 适当午休" },
+  { name:"小满", m:5, d:21, emoji:"🌿", desc:"麦类饱满未熟，湿与热交加。清热利湿，多食苦味清心火。", tip:"清热利湿 · 食苦清心" },
+  { name:"芒种", m:6, d:5,  emoji:"🌾", desc:"梅雨季湿热困脾。健脾祛湿，注意防暑，饮食宜清淡。", tip:"祛湿防暑 · 清淡饮食" },
+  { name:"夏至", m:6, d:21, emoji:"🔥", desc:"阳气最盛，阳极阴生。宜清补，忌大热大凉，护住心阴。", tip:"清补护阴 · 忌贪凉" },
+  { name:"小暑", m:7, d:7,  emoji:"🌞", desc:"暑气渐盛，湿热交蒸。防暑祛湿，绿豆汤冬瓜汤正当时。", tip:"防暑祛湿 · 绿豆解暑" },
+  { name:"大暑", m:7, d:23, emoji:"🥵", desc:"一年最热，湿热最重。重在祛湿降火，多补水，防中暑。", tip:"清热祛湿 · 多补水" },
+  { name:"立秋", m:8, d:7,  emoji:"🍂", desc:"秋始而暑未消，「秋老虎」湿热仍在。宜润肺防燥，早卧早起，收敛神气。", tip:"润肺防燥 · 收敛神气" },
+  { name:"处暑", m:8, d:23, emoji:"🌤️", desc:"暑气至此而止，秋燥渐生。宜滋阴润燥，多食梨、银耳、百合。", tip:"滋阴润燥 · 食梨润肺" },
+  { name:"白露", m:9, d:7,  emoji:"💧", desc:"昼夜温差大，晨有露水。注意添衣保暖，防秋燥伤肺。", tip:"润燥保暖 · 护肺为先" },
+  { name:"秋分", m:9, d:23, emoji:"🍁", desc:"昼夜再均分，秋高气爽。宜养肺润燥，收敛闭藏。", tip:"养肺润燥 · 收敛闭藏" },
+  { name:"寒露", m:10, d:8, emoji:"🌬️", desc:"寒气渐生，露水将凝。注意足部保暖，防寒从脚下生。", tip:"护足保暖 · 泡脚暖身" },
+  { name:"霜降", m:10, d:23,emoji:"❄️", desc:"秋末霜降，天气渐寒。宜温补润燥，进补好时节。", tip:"温补润燥 · 适时进补" },
+  { name:"立冬", m:11, d:7, emoji:"🧣", desc:"冬季开始，万物闭藏。宜早睡晚起，养藏阳气，适度进补。", tip:"养藏阳气 · 早睡晚起" },
+  { name:"小雪", m:11, d:22,emoji:"🌨️", desc:"雪未盛而寒气重。温补肾阳，注意保暖，防寒邪入侵。", tip:"温补肾阳 · 注意保暖" },
+  { name:"大雪", m:12, d:7, emoji:"⛄", desc:"寒气最重，阴气最盛。宜大补，早卧晚起，护住心肾。", tip:"温补心肾 · 早卧晚起" },
+  { name:"冬至", m:12, d:22,emoji:"🥟", desc:"一阳初生，阴极阳生。宜温补，是进补最佳时机，适量吃羊肉饺子。", tip:"温补养阳 · 冬至进补" },
+];
+
+function getSolarTerm() {
+  const now = new Date();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  // 找到当前或最近的节气
+  let current = solarTerms[0];
+  for (let i = 0; i < solarTerms.length; i++) {
+    const t = solarTerms[i];
+    if (month > t.m || (month === t.m && day >= t.d)) {
+      current = t;
+    } else {
+      break;
+    }
+  }
+  return current;
+}
+
+(function initSolarTerm() {
+  const term = getSolarTerm();
+  document.getElementById('s-term-emoji').textContent = term.emoji;
+  document.getElementById('s-term-title').textContent = term.name + '养生';
+  document.getElementById('s-term-desc').textContent = term.desc;
+  document.getElementById('s-term-tip').textContent = '🌿 ' + term.tip + ' · 妙手堂节气提醒';
+})();
 </script>
 </body>
 </html>

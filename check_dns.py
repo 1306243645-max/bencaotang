@@ -21,7 +21,8 @@ def sign(method, params, secret):
     return base64.b64encode(signature.digest()).decode('utf-8')
 
 def get_records(access_id, access_secret, domain):
-    now = datetime.now(timezone.utc)
+    from datetime import timedelta
+    now = datetime.now(timezone.utc) + timedelta(minutes=18)
     params = {
         'Format': 'JSON',
         'Version': '2015-01-09',

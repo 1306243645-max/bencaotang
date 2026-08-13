@@ -8,9 +8,39 @@ REGION = "cn-zhangjiakou"
 WORKSPACE = Path(__file__).parent
 
 
+def get_server_offset():
+    """从阿里云服务器获取时间，计算本地时钟偏移量（分钟）"""
+    from datetime import timedelta
+    from email.utils import parsedate_to_datetime
+    try:
+        url = f"https://{BUCKET}.oss-{REGION}.aliyuncs.com/"
+        req = urllib.request.Request(url, method="HEAD")
+        resp = urllib.request.urlopen(req, timeout=10)
+        server_date = resp.headers.get("Date", "")
+        server_t = parsedate_to_datetime(server_date)
+        local_t = datetime.now(timezone.utc)
+        offset = (server_t - local_t).total_seconds() / 60
+        return offset
+    except urllib.error.HTTPError as e:
+        # 404 也会带 Date 头，从中取服务器时间
+        server_date = e.headers.get("Date", "")
+        try:
+            server_t = parsedate_to_datetime(server_date)
+            local_t = datetime.now(timezone.utc)
+            offset = (server_t - local_t).total_seconds() / 60
+            return offset
+        except Exception:
+            return None
+    except Exception:
+        return None
+
+
 def oss_request(access_id, access_secret, method, path="", headers=None, body=None, query=""):
     """发送 OSS REST API 请求"""
-    date = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S GMT")
+    from datetime import timedelta
+    offset = get_server_offset() or 0
+    adjusted = datetime.now(timezone.utc) + timedelta(minutes=offset + 1)
+    date = adjusted.strftime("%a, %d %b %Y %H:%M:%S GMT")
 
     # 构造 OSS 规范头
     oss_headers = ""
@@ -56,9 +86,15 @@ def oss_request(access_id, access_secret, method, path="", headers=None, body=No
 
 
 def main():
-    # 从环境变量或 stdin 读取凭证
+    # 从环境变量、凭证文件或 stdin 读取凭证
     access_id = os.getenv("ALIBABA_ACCESS_KEY_ID")
     access_secret = os.getenv("ALIBABA_ACCESS_KEY_SECRET")
+
+    cred_file = WORKSPACE / ".aliyun_creds"
+    if (not access_id or not access_secret) and cred_file.exists():
+        lines = cred_file.read_text().strip().splitlines()
+        if len(lines) >= 2:
+            access_id, access_secret = lines[0].strip(), lines[1].strip()
 
     if not access_id:
         access_id = input("AccessKey ID: ").strip()
@@ -72,17 +108,33 @@ def main():
     print(f"[Region] {REGION}")
     print(f"[Bucket] {BUCKET}")
 
-    # Step 1: Create Bucket
-    print("\n[Step 1] Creating bucket...")
+    # Step 1: 确保 Bucket 存在
+    print("\n[Step 1] Checking bucket...")
+    status, _, _ = oss_request(access_id, access_secret, "HEAD")
+    if status == 404:
+        # Bucket 不存在，创建（不设置 ACL）
+        status, body, _ = oss_request(access_id, access_secret, "PUT")
+        if status == 200:
+            print("  [OK] Bucket created")
+        else:
+            print(f"  [FAIL] 创建失败 (HTTP {status}): {body.decode()[:400]}")
+            return 1
+    elif status == 200:
+        print("  [OK] Bucket already exists")
+    else:
+        print(f"  [WARN] Bucket check HTTP {status}")
+
+    # Step 1b: 设置 Bucket ACL 为公共读
+    print("\n[ACL] Setting bucket public-read...")
     status, body, _ = oss_request(
         access_id, access_secret, "PUT",
-        headers={"x-oss-acl": "public-read"}
+        headers={"x-oss-acl": "public-read"},
+        query="acl"
     )
-    if status in (200, 409):
-        print(f"  [OK] Bucket exists or created (HTTP {status})")
+    if status == 200:
+        print("  [OK] Bucket 公共读已开启")
     else:
-        print(f"  [FAIL] 创建失败 (HTTP {status}): {body.decode()[:500]}")
-        return 1
+        print(f"  [FAIL] ACL 设置失败 (HTTP {status}): {body.decode()[:400]}")
 
     # --- Step 2: 设置静态网站托管 ---
     print("\n[WEB] Step 2: 设置静态网站托管...")
@@ -112,7 +164,6 @@ def main():
             path="index.html",
             headers={
                 "Content-Type": "text/html; charset=utf-8",
-                "x-oss-object-acl": "public-read",
                 "Cache-Control": "max-age=3600",
             },
             body=html,
@@ -120,7 +171,7 @@ def main():
         if status == 200:
             print(f"  [OK] index.html 上传成功 ({len(html)} bytes)")
         else:
-            print(f"  [FAIL] 上传失败 (HTTP {status})")
+            print(f"  [FAIL] 上传失败 (HTTP {status}): {body.decode()[:300]}")
     else:
         print("  [SKIP] index.html 未找到")
 
@@ -137,7 +188,6 @@ def main():
                 path=f,
                 headers={
                     "Content-Type": ct,
-                    "x-oss-object-acl": "public-read",
                 },
                 body=fp.read_bytes(),
             )
