@@ -8,7 +8,7 @@ from web.components.clinic_info import CLINIC_INFO
 
 def render():
     """Render the about page."""
-    st.markdown(f"## 📖 {t('关于本草堂','About BenCao Tang')}")
+    st.markdown(f"## 📖 {t('关于妙手堂','About BenCao Tang')}")
     st.divider()
 
     col_a, col_b = st.columns([2, 1])
@@ -17,17 +17,17 @@ def render():
         ### {t('我们的故事','Our Story')}
 
         {t(
-        '山东本草堂中医诊所，源自齐鲁大地，三代中医世家传承。创始人张老先生上世纪 80 年代在山东济南创立本草堂，以"本草济世、仁心济世"为堂训，服务一方百姓。',
+        '山东妙手堂中医诊所，源自齐鲁大地，三代中医世家传承。创始人张老先生上世纪 80 年代在山东济南创立妙手堂，以"本草济世、仁心济世"为堂训，服务一方百姓。',
         'Shandong BenCao Tang TCM Clinic traces its roots to Jinan, Shandong Province, where the founding family has practiced Chinese medicine for three generations since the 1980s.'
         )}
 
         {t(
-        '第二代传人在家传基础上，融汇现代医学理念，将本草堂发展为集针灸、中药、推拿、食疗为一体的综合性中医诊所。',
+        '第二代传人在家传基础上，融汇现代医学理念，将妙手堂发展为集针灸、中药、推拿、食疗为一体的综合性中医诊所。',
         'The second generation integrated modern medical knowledge with traditional wisdom, expanding the clinic into a comprehensive TCM practice covering acupuncture, herbal medicine, tuina massage, and dietary therapy.'
         )}
 
         {t(
-        '如今，第三代传人将本草堂带到澳大利亚悉尼，致力于为澳洲华人社区及本地居民提供正宗、专业、温暖的中医健康服务。我们结合 AI 技术，让传统中医更加便捷、精准。',
+        '如今，第三代传人将妙手堂带到澳大利亚悉尼，致力于为澳洲华人社区及本地居民提供正宗、专业、温暖的中医健康服务。我们结合 AI 技术，让传统中医更加便捷、精准。',
         'Today, the third generation brings BenCao Tang to Sydney, Australia, dedicated to providing authentic, professional, and compassionate TCM care to the Chinese community and local residents. We leverage AI technology to make traditional medicine more accessible and precise.'
         )}
         """)

@@ -1,4 +1,4 @@
-"""本草堂 · AI问诊小程序页面
+"""妙手堂 · AI问诊小程序页面
 
 独立页面，适合微信内置浏览器和手机访问
 访问: https://eleven-trains-kiss.loca.lt/consult_app
@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import streamlit as st
 
 st.set_page_config(
-    page_title="本草堂 · AI智能问诊",
+    page_title="妙手堂 · AI智能问诊",
     page_icon="🌿",
     layout="centered",
     initial_sidebar_state="collapsed",
@@ -35,7 +35,7 @@ st.markdown("""
 # Header
 st.markdown("""
 <div class="consult-header">
-    <h1>🌿 本草堂 · AI 智能问诊</h1>
+    <h1>🌿 妙手堂 · AI 智能问诊</h1>
     <p>描述症状，即刻辨证施治</p>
 </div>
 """, unsafe_allow_html=True)
@@ -82,4 +82,4 @@ if prompt := st.chat_input("描述你的症状..."):
 
 # Footer
 st.divider()
-st.caption("⚠️ 本内容仅供健康教育参考，不替代医生诊断 | 本草堂中医诊所 | 18254191315")
+st.caption("⚠️ 本内容仅供健康教育参考，不替代医生诊断 | 妙手堂中医诊所 | 18254191315")

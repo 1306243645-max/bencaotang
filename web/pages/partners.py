@@ -22,7 +22,7 @@ def render():
         st.markdown(f"### 🌍 {t('海外合伙人','Overseas Partner')}")
         st.markdown(t(
             "**适合**：海外华人、留学生、中医爱好者\n\n"
-            "**做什么**：\n- 推广本草堂AI问诊\n- 组织当地中医活动\n- 分销养生产品\n\n"
+            "**做什么**：\n- 推广妙手堂AI问诊\n- 组织当地中医活动\n- 分销养生产品\n\n"
             "**收益**：\n- 产品分销佣金 20-30%\n- 课程推广佣金 30%\n- 问诊推荐佣金 15%",
             "**For**: Overseas Chinese, Students\n\n"
             "**Do**: Promote AI TCM, Local events, Product distribution\n\n"

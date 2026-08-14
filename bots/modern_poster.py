@@ -1,4 +1,4 @@
-"""本草堂 · 宋式美学海报"""
+"""妙手堂 · 宋式美学海报"""
 
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
@@ -54,7 +54,7 @@ def create(url: str):
     seal_x, seal_y = W - 250, 80
     d.rounded_rectangle([seal_x, seal_y, seal_x+140, seal_y+140], radius=8,
                        outline=(200, 120, 120), width=2)
-    d.text((seal_x+70, seal_y+50), "本草堂", fill=(200, 120, 120), font=ff(30, True), anchor="mm")
+    d.text((seal_x+70, seal_y+50), "妙手堂", fill=(200, 120, 120), font=ff(30, True), anchor="mm")
     d.text((seal_x+70, seal_y+95), "中医世家", fill=(200, 120, 120), font=ff(18), anchor="mm")
 
     # ═══ 六大服务卡片——宋式素雅 ═══
@@ -132,15 +132,15 @@ def create(url: str):
 
     qr_label_y = qr_y + qr_size + 20
     f_domain = ff(36, True)
-    d.text((W//2, qr_label_y), "本草堂.icu", fill=(60, 40, 100), font=f_domain, anchor="mm")
+    d.text((W//2, qr_label_y), "妙手堂.icu", fill=(60, 40, 100), font=f_domain, anchor="mm")
     f_url = ff(24)
     d.text((W//2, qr_label_y + 40), "微信扫码 · 免费体质自测", fill=(140, 125, 165), font=f_url, anchor="mm")
 
     # ═══ 底部 ═══
     bot_y = qr_label_y + 120
     d.line([(120, bot_y), (W-120, bot_y)], fill=(140, 110, 190), width=1)
-    d.text((W//2, bot_y+45), "山东本草堂中医诊所", fill=(50, 25, 90), font=ff(32, True), anchor="mm")
-    d.text((W//2, bot_y+95), "三代传承 · 正宗中医   |   微信搜「本草堂」", fill=(110, 80, 160), font=ff(24), anchor="mm")
+    d.text((W//2, bot_y+45), "山东妙手堂中医诊所", fill=(50, 25, 90), font=ff(32, True), anchor="mm")
+    d.text((W//2, bot_y+95), "三代传承 · 正宗中医   |   微信搜「妙手堂」", fill=(110, 80, 160), font=ff(24), anchor="mm")
 
     # ═══ 底部极简装饰 ═══
     y = bot_y + 140
@@ -150,7 +150,7 @@ def create(url: str):
     path = OUT / f"poster_song_{datetime.now():%Y%m%d_%H%M}.png"
     img.save(str(path))
     # 同时保存到桌面
-    desktop = Path.home() / "Desktop" / f"本草堂海报_{datetime.now():%Y%m%d_%H%M}.png"
+    desktop = Path.home() / "Desktop" / f"妙手堂海报_{datetime.now():%Y%m%d_%H%M}.png"
     img.save(str(desktop))
     print(f"✅ 项目: {path}")
     print(f"✅ 桌面: {desktop}")

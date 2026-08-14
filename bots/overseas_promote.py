@@ -1,4 +1,4 @@
-"""本草堂 · 海外推广引擎 + 获利转化
+"""妙手堂 · 海外推广引擎 + 获利转化
 
 每天自动生成：海外社媒文案 + 产品推广 + TikTok脚本
 """
@@ -14,7 +14,7 @@ OUTPUT = Path(__file__).parent.parent / "output" / "overseas"
 OUTPUT.mkdir(parents=True, exist_ok=True)
 
 AGENT = BaseAgent(
-    system="""你是本草堂海外营销专家。任务：
+    system="""你是妙手堂海外营销专家。任务：
 1. 生成英文+TikTok风格的中医科普内容
 2. 每条内容包含产品推广（茶饮/体质报告/课程）
 3. 用海外受众能理解的语言（不谈阴阳，说 balance/energy/wellness）
@@ -92,7 +92,7 @@ if __name__ == "__main__":
     args = p.parse_args()
 
     print("=" * 50)
-    print("🌍 本草堂 · 海外推广引擎")
+    print("🌍 妙手堂 · 海外推广引擎")
     print("=" * 50)
 
     if args.mode in ("content","all"):

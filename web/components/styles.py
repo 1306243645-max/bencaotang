@@ -1,7 +1,7 @@
-"""本草堂 CSS styles."""
+"""妙手堂 CSS styles."""
 
 CSS = """<style>
-    /* ═══════════ 本草堂 · 简约专业医疗风 ═══════════ */
+    /* ═══════════ 妙手堂 · 简约专业医疗风 ═══════════ */
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
     * { font-family: 'Noto Sans SC', 'PingFang SC', sans-serif !important; }
     :root {

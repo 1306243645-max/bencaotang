@@ -1,7 +1,7 @@
-"""本草堂 · 动漫视频生成器
+"""妙手堂 · 动漫视频生成器
 
 古风小中医角色 + 漫画分镜 + 动画效果 + AI 配音
-角色: 「小妙」— 本草堂可爱小中医学徒
+角色: 「小妙」— 妙手堂可爱小中医学徒
 """
 
 import sys, asyncio, math, random
@@ -57,7 +57,7 @@ def _font(size, bold=False):
 
 
 # ═══════════════════════════════════════════════════════════
-# Chibi Character: 「小妙」— 本草堂小中医
+# Chibi Character: 「小妙」— 妙手堂小中医
 # ═══════════════════════════════════════════════════════════
 
 def draw_chibi(draw, cx, cy, scale=1.0, face="smile", pose="stand"):
@@ -297,8 +297,8 @@ def create_anime_scenes(script: dict) -> list:
     draw_chibi(d, W//2, 950, scale=1.5, face="smile", pose="stand")
     draw_sparkles(d, W//2, 850)
     # 副标题
-    d.text((W//2, 1150), "本草堂中医诊所 · 动漫科普", fill=P.ACCENT_GOLD, font=_font(38), anchor="mt")
-    d.text((W//2, 1220), "微信搜索「本草堂」免费体质自测", fill=P.TEXT_DARK, font=_font(30), anchor="mt")
+    d.text((W//2, 1150), "妙手堂中医诊所 · 动漫科普", fill=P.ACCENT_GOLD, font=_font(38), anchor="mt")
+    d.text((W//2, 1220), "微信搜索「妙手堂」免费体质自测", fill=P.TEXT_DARK, font=_font(30), anchor="mt")
     scenes.append(cover)
 
     # ── 内容分镜 ──
@@ -338,7 +338,7 @@ def create_anime_scenes(script: dict) -> list:
             draw_sparkles(d, W-200, 300, 5)
 
         # 页脚
-        d.text((W//2, H-100), f"{i+1}/{len(paragraphs)}  本草堂 · 中医动漫科普", fill=P.SHADOW, font=_font(28), anchor="mt")
+        d.text((W//2, H-100), f"{i+1}/{len(paragraphs)}  妙手堂 · 中医动漫科普", fill=P.SHADOW, font=_font(28), anchor="mt")
 
         scenes.append(scene)
 
@@ -348,14 +348,14 @@ def create_anime_scenes(script: dict) -> list:
     draw_sakura_petals(d, 40)
     draw_chibi(d, W//2, 500, scale=2.0, face="smile", pose="hold_herb")
     draw_sparkles(d, W//2, 300, 12)
-    d.text((W//2, 800), "山东本草堂中医诊所", fill=P.TEXT_DARK, font=_font(60, True), anchor="mt")
+    d.text((W//2, 800), "山东妙手堂中医诊所", fill=P.TEXT_DARK, font=_font(60, True), anchor="mt")
     d.text((W//2, 900), "本草济世 · 仁心济世", fill=P.ACCENT_GOLD, font=_font(42), anchor="mt")
     cta_items = ["🌐 免费在线问诊", "👅 AI 舌诊分析", "📋 中医体质自测"]
     y = 1020
     for item in cta_items:
         d.text((W//2, y), item, fill=P.TEXT_DARK, font=_font(36), anchor="mt")
         y += 60
-    d.text((W//2, 1200), "微信搜索「本草堂」", fill=P.TEXT_RED, font=_font(44, True), anchor="mt")
+    d.text((W//2, 1200), "微信搜索「妙手堂」", fill=P.TEXT_RED, font=_font(44, True), anchor="mt")
     d.text((W//2, 1280), "电话: 18254191315", fill=P.SHADOW, font=_font(30), anchor="mt")
     scenes.append(end)
 
@@ -453,29 +453,29 @@ def make_anime(title: str, body: str, output_name: str = None):
 BATCH_ANIME = [
     {
         "title": "失眠为什么总在2-3点醒？",
-        "body": "熬夜党注意啦！凌晨1到3点是肝经当令时间。如果总在这个点醒来，中医叫肝火扰心。压力大、爱生气、咖啡过量都是元凶。试试菊花茶替代咖啡，睡前按一按脚背上的太冲穴。11点前放下手机，让肝好好休息。想知道你的体质类型吗？来本草堂免费测一测。",
+        "body": "熬夜党注意啦！凌晨1到3点是肝经当令时间。如果总在这个点醒来，中医叫肝火扰心。压力大、爱生气、咖啡过量都是元凶。试试菊花茶替代咖啡，睡前按一按脚背上的太冲穴。11点前放下手机，让肝好好休息。想知道你的体质类型吗？来妙手堂免费测一测。",
     },
     {
         "title": "秋天干燥咳嗽怎么办？",
-        "body": "秋天一到就咳咳咳？这是秋燥伤肺的表现。肺最喜欢润润的，最怕干燥。三样润肺宝贝：雪梨炖冰糖、百合煮粥、银耳红枣汤。少吃辛辣油炸，多喝温水。每天按一按手腕上的太渊穴，效果更好哦。关注本草堂，每天一个中医小知识。",
+        "body": "秋天一到就咳咳咳？这是秋燥伤肺的表现。肺最喜欢润润的，最怕干燥。三样润肺宝贝：雪梨炖冰糖、百合煮粥、银耳红枣汤。少吃辛辣油炸，多喝温水。每天按一按手腕上的太渊穴，效果更好哦。关注妙手堂，每天一个中医小知识。",
     },
     {
         "title": "手脚冰凉有妙招",
-        "body": "一到冬天手脚像冰块？别担心，阳虚和气郁都可能导致手脚凉。阳虚要温阳，多吃羊肉生姜肉桂。气郁要运动，让气血流通起来。每天泡脚加艾叶和生姜，暖暖的好舒服。想知道你是哪种体质？来本草堂免费自测。",
+        "body": "一到冬天手脚像冰块？别担心，阳虚和气郁都可能导致手脚凉。阳虚要温阳，多吃羊肉生姜肉桂。气郁要运动，让气血流通起来。每天泡脚加艾叶和生姜，暖暖的好舒服。想知道你是哪种体质？来妙手堂免费自测。",
     },
     {
         "title": "每天学一个穴位：足三里",
-        "body": "足三里是脾胃第一保健大穴。位置很好找，膝盖外侧凹陷下四指宽，小腿骨外侧一指宽处。每天按揉五分钟，健脾养胃、补气血、强体质。坚持一个月，你会发现胃口好了、人也有精神了。关注本草堂，带你认识更多养生穴位。",
+        "body": "足三里是脾胃第一保健大穴。位置很好找，膝盖外侧凹陷下四指宽，小腿骨外侧一指宽处。每天按揉五分钟，健脾养胃、补气血、强体质。坚持一个月，你会发现胃口好了、人也有精神了。关注妙手堂，带你认识更多养生穴位。",
     },
     {
         "title": "枸杞的正确打开方式",
-        "body": "枸杞几乎人人都在吃，但90%的人吃错了。开水泡枸杞会破坏营养，正确方法是温水泡或者直接嚼着吃。每天15到30粒就够啦，吃多了反而上火。枸杞配菊花养肝明目，配红枣补气血，配山药健脾胃。来本草堂测测体质，看看你适不适合吃枸杞。",
+        "body": "枸杞几乎人人都在吃，但90%的人吃错了。开水泡枸杞会破坏营养，正确方法是温水泡或者直接嚼着吃。每天15到30粒就够啦，吃多了反而上火。枸杞配菊花养肝明目，配红枣补气血，配山药健脾胃。来妙手堂测测体质，看看你适不适合吃枸杞。",
     },
 ]
 
 def batch_anime():
     print("=" * 60)
-    print("🎨 本草堂 · 动漫科普视频批量生成")
+    print("🎨 妙手堂 · 动漫科普视频批量生成")
     print("=" * 60)
     for i, s in enumerate(BATCH_ANIME, 1):
         print(f"\n[{i}/{len(BATCH_ANIME)}]")

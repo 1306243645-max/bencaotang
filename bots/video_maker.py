@@ -1,4 +1,4 @@
-"""本草堂 · 短视频生成器 v2 — 精美中医科普视频
+"""妙手堂 · 短视频生成器 v2 — 精美中医科普视频
 
 升级特性:
 - 3 种视觉主题（水墨古典 / 现代简约 / 温暖自然）
@@ -136,7 +136,7 @@ def wrap_lines(draw, text: str, font, max_w: int) -> list:
 def create_slides(script: dict, theme_name: str = "modern") -> list:
     """生成精美幻灯片。"""
     theme = THEMES.get(theme_name, THEMES["modern"])
-    title_text = script.get("title", "本草堂")
+    title_text = script.get("title", "妙手堂")
     body = script.get("body", script.get("text", ""))
     paragraphs = [p.strip() for p in body.split("\n") if p.strip()]
 
@@ -162,7 +162,7 @@ def create_slides(script: dict, theme_name: str = "modern") -> list:
 
     # Logo 圆
     d.ellipse([W//2-110, 290, W//2+110, 510], fill=theme["accent"])
-    d.text((W//2, 400), "本草堂", fill=theme["bg_top"], font=get_font(48, "title"), anchor="mm")
+    d.text((W//2, 400), "妙手堂", fill=theme["bg_top"], font=get_font(48, "title"), anchor="mm")
 
     # 标题
     title_lines = wrap_lines(d, title_text, f_title, W - 160)
@@ -178,7 +178,7 @@ def create_slides(script: dict, theme_name: str = "modern") -> list:
 
     # 副标题
     y += 30
-    d.text((W//2, y), "山东本草堂中医诊所", fill=theme["text_sub"], font=f_subtitle, anchor="mt")
+    d.text((W//2, y), "山东妙手堂中医诊所", fill=theme["text_sub"], font=f_subtitle, anchor="mt")
     y += 60
     d.text((W//2, y), "本草济世 · 仁心济世", fill=theme["accent"], font=f_small, anchor="mt")
 
@@ -186,7 +186,7 @@ def create_slides(script: dict, theme_name: str = "modern") -> list:
     draw_decorative_line(d, W//2-100, H-350, 200, theme["accent"], 3)
 
     d.text((W//2, H-270), "中医健康科普", fill=theme["text_sub"], font=f_subtitle, anchor="mt")
-    d.text((W//2, H-180), "微信搜索「本草堂」免费体质自测", fill=theme["accent2"], font=f_small, anchor="mt")
+    d.text((W//2, H-180), "微信搜索「妙手堂」免费体质自测", fill=theme["accent2"], font=f_small, anchor="mt")
 
     slides.append(cover.copy())
     d = None  # 释放
@@ -239,7 +239,7 @@ def create_slides(script: dict, theme_name: str = "modern") -> list:
 
         # 页码
         d.text((W-120, H-120), f"{idx+1}/{len(paragraphs)}", fill=theme["text_sub"], font=f_small, anchor="mt")
-        d.text((W//2, H-80), "本草堂中医诊所 · 微信搜索免费自测体质", fill=theme["accent"], font=f_small, anchor="mt")
+        d.text((W//2, H-80), "妙手堂中医诊所 · 微信搜索免费自测体质", fill=theme["accent"], font=f_small, anchor="mt")
 
         slides.append(slide.copy())
         d = None
@@ -257,9 +257,9 @@ def create_slides(script: dict, theme_name: str = "modern") -> list:
         draw_circle_pattern(d, W//2, 420, r, theme["accent"])
 
     d.ellipse([W//2-100, 320, W//2+100, 520], fill=theme["accent"])
-    d.text((W//2, 420), "本草堂", fill=theme["bg_top"], font=get_font(42, "title"), anchor="mm")
+    d.text((W//2, 420), "妙手堂", fill=theme["bg_top"], font=get_font(42, "title"), anchor="mm")
 
-    d.text((W//2, 620), "山东本草堂中医诊所", fill=theme["title_color"], font=f_title, anchor="mt")
+    d.text((W//2, 620), "山东妙手堂中医诊所", fill=theme["title_color"], font=f_title, anchor="mt")
 
     cta_items = [
         "🌐 免费在线问诊",
@@ -275,7 +275,7 @@ def create_slides(script: dict, theme_name: str = "modern") -> list:
     y += 30
     draw_decorative_line(d, W//2-80, y, 160, theme["accent"], 2)
     y += 50
-    d.text((W//2, y), "微信搜索「本草堂」开始你的健康之旅", fill=theme["accent2"], font=f_body, anchor="mt")
+    d.text((W//2, y), "微信搜索「妙手堂」开始你的健康之旅", fill=theme["accent2"], font=f_body, anchor="mt")
     y += 80
     d.text((W//2, y), "电话: 18254191315", fill=theme["text_sub"], font=f_small, anchor="mt")
 
@@ -374,12 +374,12 @@ def make_video(title: str, body: str, theme: str = "modern", output_name: str = 
 BATCH = [
     {
         "title": "失眠为什么总在2-3点醒？",
-        "body": "凌晨1到3点，是肝经当令的时间。如果总在这个点醒来，中医称为肝火扰心。压力大、爱生气、咖啡喝太多，都是常见原因。怎么改善？第一，把咖啡换成菊花茶。第二，睡前按太冲穴，在脚背上大脚趾和二脚趾之间。第三，晚上11点前放下手机。肝不藏魂，夜不能寐。关注本草堂，每天学点中医。",
+        "body": "凌晨1到3点，是肝经当令的时间。如果总在这个点醒来，中医称为肝火扰心。压力大、爱生气、咖啡喝太多，都是常见原因。怎么改善？第一，把咖啡换成菊花茶。第二，睡前按太冲穴，在脚背上大脚趾和二脚趾之间。第三，晚上11点前放下手机。肝不藏魂，夜不能寐。关注妙手堂，每天学点中医。",
         "theme": "classical",
     },
     {
         "title": "手脚冰凉怎么办？",
-        "body": "一入冬天手脚像冰块？中医分两种情况。阳虚的人全身都怕冷，要多吃羊肉生姜肉桂来温阳。气郁的人手脚凉但身体不冷，这是气血堵住了，要多运动出汗。怎么判断？阳虚舌淡胖，气郁舌暗红。每天泡脚加艾叶和生姜，对两种类型都有帮助。想知道你的体质，来本草堂免费自测。",
+        "body": "一入冬天手脚像冰块？中医分两种情况。阳虚的人全身都怕冷，要多吃羊肉生姜肉桂来温阳。气郁的人手脚凉但身体不冷，这是气血堵住了，要多运动出汗。怎么判断？阳虚舌淡胖，气郁舌暗红。每天泡脚加艾叶和生姜，对两种类型都有帮助。想知道你的体质，来妙手堂免费自测。",
         "theme": "warm",
     },
     {
@@ -389,19 +389,19 @@ BATCH = [
     },
     {
         "title": "口干喝水没用？你缺的不是水",
-        "body": "每天灌八杯水还是口干舌燥？中医说你可能不是缺水，是阴虚。阴虚的人津液不足，就像锅里的水少了，光加水不行，要滋阴。信号有哪些？口干想喝凉的、手心脚心发热、睡觉盗汗、舌头红少苔。多吃梨、百合、银耳、莲子，比喝白水管用十倍。来本草堂上传舌象，看看你是不是阴虚体质。",
+        "body": "每天灌八杯水还是口干舌燥？中医说你可能不是缺水，是阴虚。阴虚的人津液不足，就像锅里的水少了，光加水不行，要滋阴。信号有哪些？口干想喝凉的、手心脚心发热、睡觉盗汗、舌头红少苔。多吃梨、百合、银耳、莲子，比喝白水管用十倍。来妙手堂上传舌象，看看你是不是阴虚体质。",
         "theme": "classical",
     },
     {
         "title": "澳洲超市里的中药食材",
-        "body": "不用去中药店，普通超市就有中医宝藏。肉桂温经散寒，冬天煮苹果放一根。姜黄粉活血行气，炒菜做咖喱放一点。薄荷泡茶疏风散热。茴香籽暖胃止痛，炖肉放一勺。迷迭香温经通络，煎牛排撒一点就是药膳。用好这些食材，家常菜也能养生。关注本草堂，用身边食材做中医养生。",
+        "body": "不用去中药店，普通超市就有中医宝藏。肉桂温经散寒，冬天煮苹果放一根。姜黄粉活血行气，炒菜做咖喱放一点。薄荷泡茶疏风散热。茴香籽暖胃止痛，炖肉放一勺。迷迭香温经通络，煎牛排撒一点就是药膳。用好这些食材，家常菜也能养生。关注妙手堂，用身边食材做中医养生。",
         "theme": "warm",
     },
 ]
 
 def batch_make():
     print("=" * 60)
-    print("🎬 本草堂 · 精美短视频批量生成")
+    print("🎬 妙手堂 · 精美短视频批量生成")
     print("=" * 60)
     for i, s in enumerate(BATCH, 1):
         print(f"\n[{i}/{len(BATCH)}]")

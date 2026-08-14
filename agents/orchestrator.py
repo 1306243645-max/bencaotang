@@ -1,4 +1,4 @@
-"""本草堂 · AI 员工团队总控中心
+"""妙手堂 · AI 员工团队总控中心
 
 每天早上启动，四个 AI 员工各自开工：
   小堂(客服) + 文白(内容) + 千帆(销售) + 墨竹(运营)
@@ -43,7 +43,7 @@ class AIWorkforce:
     def morning_meeting(self):
         """早会：全员报到 + 今日计划"""
         print("=" * 60)
-        print("  🌅 本草堂 · AI 员工早会")
+        print("  🌅 妙手堂 · AI 员工早会")
         print(f"  {datetime.now().strftime('%Y年%m月%d日 %A')}")
         print("=" * 60)
 
@@ -112,7 +112,7 @@ def interactive():
     """交互模式 — 与AI员工对话"""
     wf = AIWorkforce()
     print("\n" + "=" * 60)
-    print("  🤖 本草堂 AI 员工团队 · 交互模式")
+    print("  🤖 妙手堂 AI 员工团队 · 交互模式")
     print("  输入 'exit' 退出 | 'switch 员工名' 切换员工")
     print("=" * 60)
     print(f"  可用员工: {', '.join(wf.employees.keys())}")
@@ -152,7 +152,7 @@ def interactive():
 
 if __name__ == "__main__":
     import argparse
-    p = argparse.ArgumentParser(description="本草堂 AI 员工团队")
+    p = argparse.ArgumentParser(description="妙手堂 AI 员工团队")
     p.add_argument("--mode", choices=["morning", "today", "report", "full", "chat"], default="morning")
     args = p.parse_args()
 

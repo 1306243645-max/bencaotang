@@ -1,4 +1,4 @@
-"""本草堂 · 微信智能体 — 剪贴板模式接入微信"""
+"""妙手堂 · 微信智能体 — 剪贴板模式接入微信"""
 
 import sys, re, time
 from pathlib import Path
@@ -8,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from agents.tcm_agent import create_tcm_agent
 
 agent = create_tcm_agent()
-print("[本草堂] 微信智能体已就绪")
+print("[妙手堂] 微信智能体已就绪")
 
 
 def run_clipboard():
@@ -24,7 +24,7 @@ def run_clipboard():
     import pyperclip
 
     print("=" * 40)
-    print("  本草堂 · 微信智能体 (剪贴板模式)")
+    print("  妙手堂 · 微信智能体 (剪贴板模式)")
     print("=" * 40)
     print()
     print("  使用方法:")

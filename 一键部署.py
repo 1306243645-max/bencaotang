@@ -1,4 +1,4 @@
-"""本草堂 · 一键部署脚本
+"""妙手堂 · 一键部署脚本
 
 双击或运行: python 一键部署.py
 自动: 启动网站 → 创建公网隧道 → 生成最新海报 → 打开浏览器
@@ -19,7 +19,7 @@ def run(cmd, background=False):
 
 def main():
     print("=" * 55)
-    print("  🐼 本草堂 · 一键部署")
+    print("  🐼 妙手堂 · 一键部署")
     print("=" * 55)
 
     # 1. 启动 Streamlit
@@ -66,7 +66,7 @@ def main():
     try:
         from bots.share_poster import create_poster
         url = f"http://{local_ip}:8501"
-        create_poster(url, "山东本草堂中医诊所", "本草济世·仁心济世",
+        create_poster(url, "山东妙手堂中医诊所", "本草济世·仁心济世",
                       "扫码体验 AI舌诊+体质自测+周易面诊+风水+问茶")
         print("  ✅ 海报已生成")
     except Exception as e:

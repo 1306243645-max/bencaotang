@@ -30,11 +30,19 @@ CONTENT_TOOLS = [
          lambda **kw: _read("sleep_health")),
     Tool("kb_mental", "中医情志调理·焦虑抑郁", {"type":"object","properties":{},"required":[]},
          lambda **kw: _read("mental_health")),
+    Tool("kb_exercises", "传统养生功法·八段锦五禽戏太极易筋经", {"type":"object","properties":{},"required":[]},
+         lambda **kw: _read("health_exercises")),
+    Tool("kb_solar", "二十四节气养生·四时食疗·冬病夏治", {"type":"object","properties":{},"required":[]},
+         lambda **kw: _read("solar_terms_health")),
+    Tool("kb_beauty", "中医美容养颜·内调外养·七白面膜", {"type":"object","properties":{},"required":[]},
+         lambda **kw: _read("beauty_skincare")),
+    Tool("kb_classics", "中医经典著作与国学文化", {"type":"object","properties":{},"required":[]},
+         lambda **kw: _read("classics_culture")),
 ]
 
 # ── 内容官系统提示词 ──────────────────────────────────
 
-CONTENT_OFFICER_PROMPT = """你是本草堂的AI内容官「文白」——负责所有对外内容的策划和创作。
+CONTENT_OFFICER_PROMPT = """你是妙手堂的AI内容官「文白」——负责所有对外内容的策划和创作。
 
 ## 你的身份
 - 懂中医、懂传播、懂用户心理的内容专家
@@ -108,5 +116,5 @@ def generate_daily_content(employee: AIEmployee, weekday_theme: str = None) -> d
   "hashtags": ["标签1", "标签2", "标签3"]
 }}
 
-要求：每条结尾引导「微信搜本草堂免费测体质」""")
+要求：每条结尾引导「微信搜妙手堂免费测体质」""")
     return result

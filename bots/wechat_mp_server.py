@@ -1,4 +1,4 @@
-"""本草堂 · 微信公众号 AI 后台
+"""妙手堂 · 微信公众号 AI 后台
 
 对接微信公众号，实现 AI 智能自动回复。
 审核通过后配置：
@@ -22,7 +22,7 @@ TOKEN = "miaoshou2026"
 
 # 初始化 AI Agent
 agent = create_tcm_agent()
-print("[本草堂] 公众号 AI 后台已就绪")
+print("[妙手堂] 公众号 AI 后台已就绪")
 
 app = Flask(__name__)
 
@@ -91,7 +91,7 @@ def wechat():
             event = msg.get("Event", "")
             if event == "subscribe":
                 reply = (
-                    "🌿 感谢关注山东本草堂中医诊所！\n\n"
+                    "🌿 感谢关注山东妙手堂中医诊所！\n\n"
                     "我是小妙，你的AI健康小助手✨\n\n"
                     "🔮 周易面诊 — 拍照分析体质\n"
                     "👅 AI舌诊 — 舌象智能分析\n"
@@ -101,7 +101,7 @@ def wechat():
                     "或直接回复：体质 / 预约 / 食谱 / 失眠"
                 )
             else:
-                reply = "欢迎回到本草堂！回复任意关键词开始问诊。"
+                reply = "欢迎回到妙手堂！回复任意关键词开始问诊。"
         else:
             reply = "请发送文字消息，小妙为你解答~"
 

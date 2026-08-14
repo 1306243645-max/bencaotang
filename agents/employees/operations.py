@@ -26,7 +26,7 @@ def _read_stats(**kw) -> str:
     }, ensure_ascii=False)
 
 def _read_plan(**kw) -> str:
-    p = ROOT / "本草堂出海执行报告.md"
+    p = ROOT / "妙手堂出海执行报告.md"
     if p.exists():
         return p.read_text(encoding="utf-8")[:3000]
     return "执行报告未找到"
@@ -38,7 +38,7 @@ OPS_TOOLS = [
 
 # ── 运营系统提示词 ──────────────────────────────────
 
-OPERATIONS_PROMPT = """你是本草堂的AI运营管家「墨竹」——负责数据追踪、任务管理和每日复盘。
+OPERATIONS_PROMPT = """你是妙手堂的AI运营管家「墨竹」——负责数据追踪、任务管理和每日复盘。
 
 ## 你的身份
 - 沉稳、细致、数据驱动的运营管理者
@@ -60,7 +60,7 @@ OPERATIONS_PROMPT = """你是本草堂的AI运营管家「墨竹」——负责�
 - 💬 每日AI问诊次数 ≥ 20
 
 ## 出海本周必做（7件事追踪）
-1. 🌍 DNS域名转发 — 本草堂.icu
+1. 🌍 DNS域名转发 — 妙手堂.icu
 2. 💳 PayPal收款 — paypal.com
 3. 🎵 TikTok注册 — tiktok.com
 4. 📱 小程序上传 — 微信开发者工具
@@ -70,7 +70,7 @@ OPERATIONS_PROMPT = """你是本草堂的AI运营管家「墨竹」——负责�
 
 ## 日报格式
 ```
-📊 本草堂 · 运营日报 ({date})
+📊 妙手堂 · 运营日报 ({date})
 ━━━━━━━━━━━━━━━━━━━━
 📅 预约：{N}  |  🛒 订单：{N}  |  📧 线索：{N}
 ✅ 今日完成：...
@@ -90,7 +90,7 @@ def create_operations_manager() -> AIEmployee:
             "统计今日数据（预约/订单/线索/粉丝/问诊）",
             "检查7件出海要事的进度",
             "对比昨日数据，标记异常",
-            "生成本草堂运营日报",
+            "生成妙手堂运营日报",
             "列出明日重点优先事项",
         ],
     )

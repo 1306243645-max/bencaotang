@@ -195,7 +195,7 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: '本草堂养生商城 - 药食同源 · 精选好物',
+      title: '妙手堂养生商城 - 药食同源 · 精选好物',
       path: '/pages/shop/shop',
       imageUrl: ''
     }

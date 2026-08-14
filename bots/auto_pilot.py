@@ -1,4 +1,4 @@
-"""本草堂 · 智能体自动驾驶系统
+"""妙手堂 · 智能体自动驾驶系统
 
 按计划自动执行：每日内容生成 → 视频脚本 → 社媒文案 → 推送
 使用：python bots/auto_pilot.py  或  双击 start-autopilot.bat
@@ -18,14 +18,14 @@ def _read(f): return (_KB / f).read_text(encoding="utf-8")
 
 # ── 初始化 Agent ──────────────────────────────────────────
 
-SYSTEM = """你是本草堂中医诊所的内容创作专家。你精通中医理论、五运六气、食疗养生。
+SYSTEM = """你是妙手堂中医诊所的内容创作专家。你精通中医理论、五运六气、食疗养生。
 你的任务是根据给定的内容计划，生成高质量的中医科普内容。
 
 输出规则：
 1. 每条内容 80-200 字
 2. 语言通俗易懂，像朋友在聊天
 3. 每条包含一个中医知识点 + 一个实用小建议
-4. 结尾加上引流话术（微信搜本草堂免费体质自测）
+4. 结尾加上引流话术（微信搜妙手堂免费体质自测）
 5. 用 JSON 格式输出"""
 
 agent = BaseAgent(system=SYSTEM, max_tokens=4096, max_tool_rounds=3)
@@ -70,7 +70,7 @@ def generate_daily_content(day_offset=0):
 - 内容通俗易懂，像朋友聊天
 - 包含1个中医知识点+1个实用建议
 - 小红书标题要吸引眼球
-- 结尾引流：微信搜「本草堂」免费体质自测"""
+- 结尾引流：微信搜「妙手堂」免费体质自测"""
 
     resp = agent.chat(prompt)
     return {"date": target_date.strftime("%Y-%m-%d"), "week": week_idx+1, "theme": week["theme"], "topic": topic, "content": resp.content}
@@ -78,7 +78,7 @@ def generate_daily_content(day_offset=0):
 def batch_generate(days=30):
     """批量生成 N 天的内容。"""
     print("=" * 60)
-    print(f"🚀 本草堂自动驾驶 · 批量生成 {days} 天内容")
+    print(f"🚀 妙手堂自动驾驶 · 批量生成 {days} 天内容")
     print("=" * 60)
 
     all_content = []
@@ -100,7 +100,7 @@ def batch_generate(days=30):
 
     # 同时生成易读的 Markdown 版本
     md_file = OUTPUT / f"content_batch_{datetime.now():%Y%m%d_%H%M}.md"
-    md_lines = [f"# 本草堂 · 自动驾驶内容输出\n", f"生成时间: {datetime.now()}\n\n---\n"]
+    md_lines = [f"# 妙手堂 · 自动驾驶内容输出\n", f"生成时间: {datetime.now()}\n\n---\n"]
     for c in all_content:
         md_lines.append(f"## Day {all_content.index(c)+1}: {c.get('topic','?')} ({c.get('date','?')})")
         md_lines.append(f"\n{c.get('content','生成失败')}\n\n---\n")
@@ -124,7 +124,7 @@ def generate_todays_post():
 
 if __name__ == "__main__":
     import argparse
-    p = argparse.ArgumentParser(description="本草堂 · 自动驾驶")
+    p = argparse.ArgumentParser(description="妙手堂 · 自动驾驶")
     p.add_argument("--mode", choices=["today","batch"], default="batch")
     p.add_argument("--days", type=int, default=30)
     args = p.parse_args()

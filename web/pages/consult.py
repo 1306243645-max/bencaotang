@@ -17,9 +17,9 @@ def render():
     # --- 智能问诊 ---
     with tab_chat:
         if not st.session_state.messages:
-            st.markdown(f"### {t('欢迎使用本草堂 AI 问诊','Welcome to BenCao Tang AI')}")
+            st.markdown(f"### {t('欢迎使用妙手堂 AI 问诊','Welcome to BenCao Tang AI')}")
             st.markdown(t(
-                "我是本草堂的 AI 健康顾问。选择下方模板或直接描述症状，即刻辨证分析。\n\n⚠️ 本 AI 提供健康教育信息，不替代医生诊断。",
+                "我是妙手堂的 AI 健康顾问。选择下方模板或直接描述症状，即刻辨证分析。\n\n⚠️ 本 AI 提供健康教育信息，不替代医生诊断。",
                 "I'm the BenCao Tang AI health advisor. Select a template or describe your symptoms.\n\n⚠️ Educational info only."
             ))
 
@@ -136,7 +136,7 @@ def render():
 
     # --- 舌诊分析 ---
     with tab_tongue:
-        st.markdown(f"### 👅 {t('本草堂 · AI舌诊','BenCao Tang · AI Tongue Dx')}")
+        st.markdown(f"### 👅 {t('妙手堂 · AI舌诊','BenCao Tang · AI Tongue Dx')}")
 
         # 拍摄指南
         with st.expander(t("📸 如何拍一张合格的舌象照片？","📸 How to take a good tongue photo"), expanded=True):

@@ -1,4 +1,4 @@
-"""本草堂 · 分享海报生成器 — 生成精美宣传海报供社交分享"""
+"""妙手堂 · 分享海报生成器 — 生成精美宣传海报供社交分享"""
 
 import sys, io, base64
 from pathlib import Path
@@ -20,7 +20,7 @@ def _font(size, bold=False):
         if p.exists(): return ImageFont.truetype(str(p), size)
     return ImageFont.load_default()
 
-def create_poster(url: str, title: str = "山东本草堂中医诊所",
+def create_poster(url: str, title: str = "山东妙手堂中医诊所",
                   subtitle: str = "本草济世 · 仁心济世",
                   cta: str = "扫码免费体验 AI 舌诊 + 体质自测",
                   output_name: str = None):
@@ -49,7 +49,7 @@ def create_poster(url: str, title: str = "山东本草堂中医诊所",
 
     # Logo 圆
     d.ellipse([W//2-80, 140, W//2+80, 300], fill=(82, 183, 136))
-    d.text((W//2, 220), "本草堂", fill="white", font=_font(38, True), anchor="mm")
+    d.text((W//2, 220), "妙手堂", fill="white", font=_font(38, True), anchor="mm")
 
     # 标题
     f_title = _font(68, True)
@@ -90,7 +90,7 @@ def create_poster(url: str, title: str = "山东本草堂中医诊所",
     d.rounded_rectangle([qr_x-30, qr_y-30, qr_x+qr_size+30, qr_y+qr_size+30],
                         radius=20, fill=(255,255,255), outline=(82,183,136), width=3)
 
-    qr_content = url  # 本草堂网站链接
+    qr_content = url  # 妙手堂网站链接
     qr = qrcode.make(qr_content)
     qr_img = qr.resize((qr_size, qr_size))
     img.paste(qr_img, (qr_x, qr_y))
@@ -100,7 +100,7 @@ def create_poster(url: str, title: str = "山东本草堂中医诊所",
     d.text((W//2, qr_y+qr_size+60), cta, fill=(82,183,136), font=f_cta, anchor="mt")
 
     # 底部
-    d.text((W//2, H-100), f"山东本草堂中医诊所 · {datetime.now().year}", fill=(180,170,155), font=_font(26), anchor="mt")
+    d.text((W//2, H-100), f"山东妙手堂中医诊所 · {datetime.now().year}", fill=(180,170,155), font=_font(26), anchor="mt")
 
     # 保存
     OUTPUT.mkdir(parents=True, exist_ok=True)
@@ -125,7 +125,7 @@ if __name__ == "__main__":
     import argparse
     p = argparse.ArgumentParser()
     p.add_argument("--url", default="http://172.20.21.34:8501")
-    p.add_argument("--title", default="山东本草堂中医诊所")
+    p.add_argument("--title", default="山东妙手堂中医诊所")
     p.add_argument("--subtitle", default="本草济世 · 仁心济世")
     p.add_argument("--cta", default="扫码免费体验 AI 舌诊 + 体质自测")
     args = p.parse_args()

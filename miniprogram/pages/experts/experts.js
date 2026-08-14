@@ -62,7 +62,7 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: '本草堂名医团队 - 三代传承 · 名医荟萃',
+      title: '妙手堂名医团队 - 三代传承 · 名医荟萃',
       path: '/pages/experts/experts',
       imageUrl: ''
     }

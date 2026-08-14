@@ -1,4 +1,4 @@
-"""本草堂 · 十大计划自动驾驶系统
+"""妙手堂 · 十大计划自动驾驶系统
 
 自动执行所有可自动化的工作计划，无需人工干预。
 
@@ -28,7 +28,7 @@ DAILY = OUTPUT / "daily_report"
 class AutoWorker:
     def __init__(self):
         self.agent = BaseAgent(
-            system="你是本草堂自动驾驶系统。高效执行所有任务，输出简洁JSON。",
+            system="你是妙手堂自动驾驶系统。高效执行所有任务，输出简洁JSON。",
             max_tokens=4096, max_tool_rounds=2
         )
         self.today = datetime.now()
@@ -37,7 +37,7 @@ class AutoWorker:
     def run_all(self):
         """执行所有自动化计划"""
         print(f"\n{'='*55}")
-        print(f"  🤖 本草堂自动驾驶 · {self.today.strftime('%Y-%m-%d %H:%M')}")
+        print(f"  🤖 妙手堂自动驾驶 · {self.today.strftime('%Y-%m-%d %H:%M')}")
         print(f"{'='*55}\n")
 
         tasks = [
@@ -85,7 +85,7 @@ class AutoWorker:
     def plan_course_promo(self):
         """计划四：知识付费课程推广"""
         courses = ["五运六气入门¥99","金锁玉关风水¥199","人体气象站¥299","周易面诊¥149"]
-        prompt = f"为本草堂课程写一句推广语（20字内），推荐课程：{courses[self.today.day%4]}"
+        prompt = f"为妙手堂课程写一句推广语（20字内），推荐课程：{courses[self.today.day%4]}"
         resp = self.agent.chat(prompt)
         path = OUTPUT / "course_promo" / f"promo_{self.today:%Y%m%d}.txt"
         path.parent.mkdir(exist_ok=True)

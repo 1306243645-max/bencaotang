@@ -99,5 +99,5 @@
   <view>📞 {{contactInfo.phone}} | 💬 微信: {{contactInfo.wechat}}</view>
   <view style="margin-top: 8rpx;">📍 {{contactInfo.address}}</view>
   <view style="margin-top: 16rpx;">⚠️ AI问诊仅供健康教育参考，不构成医疗建议。</view>
-  <view>© 2026 山东本草堂中医诊所</view>
+  <view>© 2026 山东妙手堂中医诊所</view>
 </view>

@@ -2,7 +2,7 @@ const app = getApp()
 
 Page({
   data: {
-    clinicName: '山东本草堂中医诊所',
+    clinicName: '山东妙手堂中医诊所',
     slogan: '本草济世 · 仁心济世',
     features: [
       {
@@ -38,7 +38,7 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: '本草堂中医诊所 - AI智能问诊',
+      title: '妙手堂中医诊所 - AI智能问诊',
       path: '/pages/index/index',
       imageUrl: ''
     }

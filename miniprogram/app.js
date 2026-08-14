@@ -5,7 +5,7 @@ App({
     wechat: '18254191315',
     email: '83497212@qq.com',
     address: '山东省济南市历下区经十路123号',
-    clinicName: '山东本草堂中医诊所',
+    clinicName: '山东妙手堂中医诊所',
     slogan: '本草济世 · 仁心济世',
     hours: '周一至周五 8:30-17:30 | 周六 9:00-16:00',
     quickQuestion: '',
@@ -46,7 +46,7 @@ App({
         id: 4,
         icon: '🤖',
         avatar: '',
-        name: '本草堂AI团队',
+        name: '妙手堂AI团队',
         title: 'AI问诊知识库专家组',
         field: '中医学 · AI融合',
         desc: '22个专业知识库，涵盖中医全科。结合经典中医理论与AI技术，提供24小时在线智能辨证服务。',
@@ -116,7 +116,7 @@ App({
   },
 
   onLaunch() {
-    console.log('本草堂小程序启动')
+    console.log('妙手堂小程序启动')
     // 读取本地存储的购物车
     const cart = wx.getStorageSync('cart')
     if (cart) this.globalData.cart = cart

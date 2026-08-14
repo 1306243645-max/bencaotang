@@ -14,7 +14,7 @@ from web.components.clinic_info import CLINIC_INFO
 def render():
     """Render the shop page."""
     st.markdown(f"## 🛒 {t('养生食品商城','Wellness Shop')}")
-    st.caption(t("本草堂精选 · 药食同源 · 澳洲配送","BenCao Tang精选 · Food-as-Medicine · AU Delivery"))
+    st.caption(t("妙手堂精选 · 药食同源 · 澳洲配送","BenCao Tang精选 · Food-as-Medicine · AU Delivery"))
     st.divider()
 
     products = [

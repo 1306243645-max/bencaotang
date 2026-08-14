@@ -1,4 +1,4 @@
-"""本草堂 · 智能体自我进化系统
+"""妙手堂 · 智能体自我进化系统
 
 每天自动执行:
   1. 知识库更新——搜索最新中医出海资讯
@@ -19,7 +19,7 @@ DATA = OUT / "analytics"
 DATA.mkdir(parents=True, exist_ok=True)
 
 AGENT = BaseAgent(
-    system="你是本草堂智能进化引擎。分析数据，优化策略，输出JSON。",
+    system="你是妙手堂智能进化引擎。分析数据，优化策略，输出JSON。",
     max_tokens=2048, max_tool_rounds=2
 )
 

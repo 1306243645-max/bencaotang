@@ -1,4 +1,4 @@
-"""本草堂 · 视频剪辑工具
+"""妙手堂 · 视频剪辑工具
 
 功能：加字幕 / 加背景音乐 / 裁剪 / 合并 / 加文字水印 / 封面
 
@@ -8,7 +8,7 @@
     python bots/video_editor.py add-music -i input.mp4 -m music.mp3
     python bots/video_editor.py trim -i input.mp4 --start 2 --end 30
     python bots/video_editor.py merge -i vid1.mp4 vid2.mp4 -o merged.mp4
-    python bots/video_editor.py add-watermark -i input.mp4 -w "本草堂"
+    python bots/video_editor.py add-watermark -i input.mp4 -w "妙手堂"
 """
 
 import sys
@@ -163,7 +163,7 @@ def merge(input_paths: list, output_path: str = None):
 # 水印
 # ═══════════════════════════════════════════════════════════
 
-def add_watermark(input_path: str, text: str = "本草堂", output_path: str = None):
+def add_watermark(input_path: str, text: str = "妙手堂", output_path: str = None):
     """在视频右上角添加文字水印。
 
     Args:
@@ -196,7 +196,7 @@ def add_watermark(input_path: str, text: str = "本草堂", output_path: str = N
 # ═══════════════════════════════════════════════════════════
 
 def enhance(input_path: str, subtitle_text: str, music_path: str = None,
-            watermark: str = "本草堂", output_path: str = None):
+            watermark: str = "妙手堂", output_path: str = None):
     """一键美化：加字幕 + 水印 + 可选背景音乐。
 
     Args:
@@ -253,7 +253,7 @@ def _tmp(tag: str) -> str:
 
 if __name__ == "__main__":
     import argparse
-    p = argparse.ArgumentParser(description="本草堂 · 视频剪辑工具")
+    p = argparse.ArgumentParser(description="妙手堂 · 视频剪辑工具")
     sp = p.add_subparsers(dest="cmd")
 
     # 加字幕
@@ -284,7 +284,7 @@ if __name__ == "__main__":
     # 水印
     p5 = sp.add_parser("add-watermark")
     p5.add_argument("-i", required=True)
-    p5.add_argument("-w", "--watermark", default="本草堂")
+    p5.add_argument("-w", "--watermark", default="妙手堂")
     p5.add_argument("-o", "--output")
 
     # 一键美化
@@ -292,7 +292,7 @@ if __name__ == "__main__":
     p6.add_argument("-i", required=True)
     p6.add_argument("-t", "--text", required=True)
     p6.add_argument("-m", "--music")
-    p6.add_argument("-w", "--watermark", default="本草堂")
+    p6.add_argument("-w", "--watermark", default="妙手堂")
     p6.add_argument("-o", "--output")
 
     args = p.parse_args()

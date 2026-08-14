@@ -117,8 +117,8 @@ Page({
 
   goAbout() {
     wx.showModal({
-      title: '关于本草堂',
-      content: '山东本草堂中医诊所\n\n三代中医世家传承\nAI智能问诊 · 22个知识库\n五运六气 · 面诊 · 舌诊\n\n版本：v1.0.0\n\n🌿 本草济世 · 仁心济世',
+      title: '关于妙手堂',
+      content: '山东妙手堂中医诊所\n\n三代中医世家传承\nAI智能问诊 · 22个知识库\n五运六气 · 面诊 · 舌诊\n\n版本：v1.0.0\n\n🌿 本草济世 · 仁心济世',
       showCancel: false,
       confirmText: '我知道了'
     })
@@ -127,7 +127,7 @@ Page({
   // 分享
   onShareAppMessage() {
     return {
-      title: '本草堂中医诊所 - AI智能中医问诊',
+      title: '妙手堂中医诊所 - AI智能中医问诊',
       path: '/pages/index/index',
       imageUrl: ''
     }

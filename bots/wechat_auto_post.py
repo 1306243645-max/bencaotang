@@ -1,4 +1,4 @@
-"""本草堂 · 公众号自动发布系统
+"""妙手堂 · 公众号自动发布系统
 
 功能：读取每日生成的内容 → 创建公众号草稿 → 定时发布
 
@@ -61,7 +61,7 @@ def get_today_content():
         text = match.group(1)
         text = text.replace('\\n', '\n')
         return {
-            "title": data.get("topic", "本草堂每日养生"),
+            "title": data.get("topic", "妙手堂每日养生"),
             "content": text,
             "source": data,
         }

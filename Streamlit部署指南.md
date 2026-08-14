@@ -1,4 +1,4 @@
-# 本草堂 · Streamlit Cloud 免费部署指南
+# 妙手堂 · Streamlit Cloud 免费部署指南
 
 > 免费！永久域名！全球访问！
 
@@ -10,7 +10,7 @@
 2. 点击右上角「+」→「New repository」
 3. 填写：
    - Repository name: `bencaotang`
-   - Description: 山东本草堂中医诊所 - AI中医问诊平台
+   - Description: 山东妙手堂中医诊所 - AI中医问诊平台
    - 选择 Public（公开）
    - ⚠️ 不要勾选 Add README
 4. 点击「Create repository」
@@ -25,7 +25,7 @@ cd C:\Users\Admin\agent-workstation
 # 初始化 git
 git init
 git add .
-git commit -m "本草堂中医诊所上线"
+git commit -m "妙手堂中医诊所上线"
 
 # 推送到 GitHub（替换 YOUR_USERNAME 为你的 GitHub 用户名）
 git remote add origin https://github.com/YOUR_USERNAME/bencaotang.git
@@ -63,7 +63,7 @@ https://bencaotang.streamlit.app
 ## 部署后
 
 1. 把新网址发给我，我更新所有海报和二维码
-2. 任何人扫海报二维码，全球都能打开本草堂！
+2. 任何人扫海报二维码，全球都能打开妙手堂！
 
 ---
 

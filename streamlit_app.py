@@ -1,4 +1,4 @@
-"""本草堂中医诊所 · Streamlit Cloud 部署版"""
+"""妙手堂中医诊所 · Streamlit Cloud 部署版"""
 
 import sys, os
 from pathlib import Path

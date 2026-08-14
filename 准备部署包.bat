@@ -1,7 +1,7 @@
 @echo off
 cd /d C:\Users\Admin\agent-workstation
 echo ╔══════════════════════════════════════╗
-echo ║   本草堂 · 打包免费部署文件       ║
+echo ║   妙手堂 · 打包免费部署文件       ║
 echo ╚══════════════════════════════════════╝
 echo.
 set DEPLOY_DIR=deploy_package

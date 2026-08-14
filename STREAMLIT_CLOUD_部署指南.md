@@ -1,4 +1,4 @@
-# 本草堂 · Streamlit Cloud 部署指南
+# 妙手堂 · Streamlit Cloud 部署指南
 
 > 5 分钟部署，永久在线，免费
 
@@ -64,7 +64,7 @@ ANTHROPIC_DEFAULT_MODEL = deepseek-v4-pro
 
 ---
 
-## 可选：绑定本草堂.icu
+## 可选：绑定妙手堂.icu
 
 在阿里云 DNS 解析中，用「显性URL」转发：
 - 记录值：`https://bencaotang.streamlit.app`

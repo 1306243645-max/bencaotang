@@ -1,4 +1,4 @@
-"""山东本草堂中医诊所 · BenCao Tang TCM Clinic — 官网"""
+"""山东妙手堂中医诊所 · BenCao Tang TCM Clinic — 官网"""
 
 import sys, json, base64
 from pathlib import Path
@@ -34,7 +34,7 @@ TCM_TOOLS = [
 
 # ── 系统提示词 ────────────────────────────────────────────
 
-SYSTEM_ZH = """你是「小妙」——山东本草堂中医诊所的AI健康顾问。温暖亲切，专业严谨。
+SYSTEM_ZH = """你是「小妙」——山东妙手堂中医诊所的AI健康顾问。温暖亲切，专业严谨。
 
 ## 核心能力
 - 四诊合参 + 八纲九候 + 五运六气 + 周易面诊 + 金锁玉关风水
@@ -96,7 +96,7 @@ CONSTITUTION_QUIZ = {
 # ── 诊所信息 ──────────────────────────────────────────────
 
 CLINIC_INFO = {
-    "name": "山东本草堂中医诊所",
+    "name": "山东妙手堂中医诊所",
     "name_en": "Shandong BenCao Tang TCM Clinic",
     "slogan": "本草济世 · 仁心济世",
     "slogan_en": "Healing Hands · Compassionate Care",
@@ -105,17 +105,17 @@ CLINIC_INFO = {
     "wechat": "18254191315",
     "email": "83497212@qq.com",
     "hours": "周一至周五 8:30-17:30 | 周六 9:00-16:00",
-    "description": "本草堂源于山东中医世家，三代传承，立足齐鲁大地，服务全国。我们结合经典中医理论与现代健康理念，为广大群众提供专业、温暖的中医健康服务。",
+    "description": "妙手堂源于山东中医世家，三代传承，立足齐鲁大地，服务全国。我们结合经典中医理论与现代健康理念，为广大群众提供专业、温暖的中医健康服务。",
 }
 
 # ── 页面配置 ──────────────────────────────────────────────
 
-st.set_page_config(page_title="本草堂中医诊所", page_icon="🐼", layout="wide")
+st.set_page_config(page_title="妙手堂中医诊所", page_icon="🐼", layout="wide")
 
 # ── CSS ───────────────────────────────────────────────────
 
 st.markdown("""<style>
-    /* ═══════════ 本草堂 · 宋式美学 装饰版 ═══════════ */
+    /* ═══════════ 妙手堂 · 宋式美学 装饰版 ═══════════ */
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500&family=ZCOOL+XiaoWei&display=swap');
     * { font-family: 'Noto Sans SC', 'PingFang SC', sans-serif !important; }
 
@@ -369,7 +369,7 @@ st.divider()
 # ── 侧边栏（全局） ────────────────────────────────────────
 
 with st.sidebar:
-    st.markdown(f"## 🐼 本草堂")
+    st.markdown(f"## 🐼 妙手堂")
     # 熊猫萌宠
     import base64 as _b64
     _img = _b64.b64encode(open('web/static/orange_cat.png','rb').read()).decode()
@@ -377,7 +377,7 @@ with st.sidebar:
     <div style="text-align:center;padding:0.5rem;margin:0.5rem 0;background:rgba(255,255,255,0.06);border-radius:12px;border:1px solid rgba(155,142,196,0.3);">
         <img src="data:image/png;base64,{_img}" width="130" style="border-radius:50%;">
         <div style="font-weight:700;color:#B5A8D4;font-size:1rem;margin-top:0.3rem;">妙妙 · Panda</div>
-        <div style="font-size:0.75rem;opacity:0.7;">本草堂 AI 健康问诊</div>
+        <div style="font-size:0.75rem;opacity:0.7;">妙手堂 AI 健康问诊</div>
     </div>
     """, unsafe_allow_html=True)
     st.caption(t("三代传承 · 正宗中医","Heritage TCM · Since 1980s"))
@@ -396,9 +396,9 @@ with st.sidebar:
     st.markdown(f"#### 🌐 社交媒体")
     social_html = """
     <div style="display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;">
-    <a href="https://weibo.com/本草堂" target="_blank" style="background:#E6162D;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">🧣 微博</a>
-    <a href="https://xiaohongshu.com/本草堂" target="_blank" style="background:#FE2C55;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">📕 小红书</a>
-    <a href="https://douyin.com/本草堂" target="_blank" style="background:#111;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">🎵 抖音</a>
+    <a href="https://weibo.com/妙手堂" target="_blank" style="background:#E6162D;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">🧣 微博</a>
+    <a href="https://xiaohongshu.com/妙手堂" target="_blank" style="background:#FE2C55;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">📕 小红书</a>
+    <a href="https://douyin.com/妙手堂" target="_blank" style="background:#111;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">🎵 抖音</a>
     <a href="https://facebook.com/BenCaoTang" target="_blank" style="background:#1877F2;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">📘 FB</a>
     <a href="https://instagram.com/bencaotang_tcm" target="_blank" style="background:#E4405F;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">📷 IG</a>
     <a href="https://tiktok.com/@bencaotang" target="_blank" style="background:#000;color:white;padding:4px 10px;border-radius:12px;text-decoration:none;font-size:0.75rem;">🎬 TikTok</a>
@@ -406,8 +406,8 @@ with st.sidebar:
     """
     st.markdown(social_html, unsafe_allow_html=True)
     st.divider()
-    # ── 本草堂二维码（高容错+白边）──
-    st.markdown(f"#### 📱 {t('扫码打开本草堂','Scan for BenCao Tang')}")
+    # ── 妙手堂二维码（高容错+白边）──
+    st.markdown(f"#### 📱 {t('扫码打开妙手堂','Scan for BenCao Tang')}")
     import io, qrcode, base64 as b64
     from qrcode.image.styledpil import StyledPilImage
     from qrcode.image.styles.moduledrawers import RoundedModuleDrawer
@@ -440,7 +440,7 @@ with st.sidebar:
         qr_b64_img = b64.b64encode(buf.getvalue()).decode()
         st.markdown(f'<div style="text-align:center"><img src="data:image/png;base64,{qr_b64_img}" width="180"></div>', unsafe_allow_html=True)
 
-    st.caption(f"📱 {t('微信扫码打开本草堂官网','Scan with WeChat to open')}")
+    st.caption(f"📱 {t('微信扫码打开妙手堂官网','Scan with WeChat to open')}")
     st.caption(f"🔗 {t('公网链接','Public URL')}: wet-camels-sit.loca.lt")
     st.caption(t("💡 扫码不成功？试试截图→微信扫一扫→相册","💡 Can't scan? Screenshot → WeChat → Album"))
 
@@ -452,7 +452,7 @@ with st.sidebar:
     st.metric(t("今日分享","Shares Today"), st.session_state.shares)
     st.caption(t("每推荐1位好友 → 双方各得免费体质茶1份","Refer a friend → Both get free tea"))
     st.divider()
-    st.caption("© 2026 山东本草堂中医诊所")
+    st.caption("© 2026 山东妙手堂中医诊所")
 
 # ═══════════════════════════════════════════════════════════
 # 🏠 首页
@@ -461,7 +461,7 @@ if st.session_state.page == "home":
     st.markdown(f"""
     <div class="hero">
         <p style="font-size:0.9rem;color:#B5D3C5;letter-spacing:0.2em;text-transform:uppercase;">SHANDONG MIAOSHOU TANG</p>
-        <h1>山东本草堂</h1>
+        <h1>山东妙手堂</h1>
         <p style="font-size:1.3rem;color:var(--accent);font-weight:300;margin:0.5rem 0;">{CLINIC_INFO['slogan']}</p>
         <p style="font-style:italic;color:var(--ink-light);font-weight:300;margin-top:1.5rem;font-size:0.95rem;">
         「上医治未病」 ——《黄帝内经》
@@ -502,7 +502,7 @@ if st.session_state.page == "home":
 # 📖 关于我们
 # ═══════════════════════════════════════════════════════════
 elif st.session_state.page == "about":
-    st.markdown(f"## 📖 {t('关于本草堂','About BenCao Tang')}")
+    st.markdown(f"## 📖 {t('关于妙手堂','About BenCao Tang')}")
     st.divider()
 
     col_a, col_b = st.columns([2, 1])
@@ -511,17 +511,17 @@ elif st.session_state.page == "about":
         ### {t('我们的故事','Our Story')}
 
         {t(
-        '山东本草堂中医诊所，源自齐鲁大地，三代中医世家传承。创始人张老先生上世纪 80 年代在山东济南创立本草堂，以"本草济世、仁心济世"为堂训，服务一方百姓。',
+        '山东妙手堂中医诊所，源自齐鲁大地，三代中医世家传承。创始人张老先生上世纪 80 年代在山东济南创立妙手堂，以"本草济世、仁心济世"为堂训，服务一方百姓。',
         'Shandong BenCao Tang TCM Clinic traces its roots to Jinan, Shandong Province, where the founding family has practiced Chinese medicine for three generations since the 1980s.'
         )}
 
         {t(
-        '第二代传人在家传基础上，融汇现代医学理念，将本草堂发展为集针灸、中药、推拿、食疗为一体的综合性中医诊所。',
+        '第二代传人在家传基础上，融汇现代医学理念，将妙手堂发展为集针灸、中药、推拿、食疗为一体的综合性中医诊所。',
         'The second generation integrated modern medical knowledge with traditional wisdom, expanding the clinic into a comprehensive TCM practice covering acupuncture, herbal medicine, tuina massage, and dietary therapy.'
         )}
 
         {t(
-        '如今，第三代传人将本草堂带到澳大利亚悉尼，致力于为澳洲华人社区及本地居民提供正宗、专业、温暖的中医健康服务。我们结合 AI 技术，让传统中医更加便捷、精准。',
+        '如今，第三代传人将妙手堂带到澳大利亚悉尼，致力于为澳洲华人社区及本地居民提供正宗、专业、温暖的中医健康服务。我们结合 AI 技术，让传统中医更加便捷、精准。',
         'Today, the third generation brings BenCao Tang to Sydney, Australia, dedicated to providing authentic, professional, and compassionate TCM care to the Chinese community and local residents. We leverage AI technology to make traditional medicine more accessible and precise.'
         )}
         """)
@@ -581,9 +581,9 @@ elif st.session_state.page == "consult":
     # --- 智能问诊 ---
     with tab_chat:
         if not st.session_state.messages:
-            st.markdown(f"### {t('欢迎使用本草堂 AI 问诊','Welcome to BenCao Tang AI')}")
+            st.markdown(f"### {t('欢迎使用妙手堂 AI 问诊','Welcome to BenCao Tang AI')}")
             st.markdown(t(
-                "我是本草堂的 AI 健康顾问。请描述你的症状，我将从中医角度帮你分析。\n\n📸 方便的话上传舌头照片，辨证更精准。不方便也没关系～\n\n⚠️ 本 AI 提供健康教育信息，不替代医生诊断。",
+                "我是妙手堂的 AI 健康顾问。请描述你的症状，我将从中医角度帮你分析。\n\n📸 方便的话上传舌头照片，辨证更精准。不方便也没关系～\n\n⚠️ 本 AI 提供健康教育信息，不替代医生诊断。",
                 "I'm the BenCao Tang AI health advisor. Describe your symptoms for TCM analysis.\n\n📸 Optional: upload a tongue photo for more accurate diagnosis.\n\n⚠️ Educational info only."
             ))
             st.caption(t("💡 试试：失眠口干怎么办 | 饭后腹胀乏力 | 月经痛怕冷","💡 Try: insomnia, bloating, period pain..."))
@@ -946,7 +946,7 @@ elif st.session_state.page == "recipes":
 # ═══════════════════════════════════════════════════════════
 elif st.session_state.page == "shop":
     st.markdown(f"## 🛒 {t('养生食品商城','Wellness Shop')}")
-    st.caption(t("本草堂精选 · 药食同源 · 澳洲配送","BenCao Tang精选 · Food-as-Medicine · AU Delivery"))
+    st.caption(t("妙手堂精选 · 药食同源 · 澳洲配送","BenCao Tang精选 · Food-as-Medicine · AU Delivery"))
     st.divider()
 
     products = [
@@ -1231,6 +1231,6 @@ st.markdown(f"""
     <p style="margin-top:1rem;font-size:0.75rem;">
         ⚠️ {t('本网站 AI 问诊仅供健康教育参考，不构成医疗建议。请咨询 AHPRA 注册中医师。','AI consultation is for educational purposes only. Not medical advice. Consult an AHPRA-registered practitioner.')}
     </p>
-    <p>© 2026 山东本草堂中医诊所</p>
+    <p>© 2026 山东妙手堂中医诊所</p>
 </div>
 """, unsafe_allow_html=True)

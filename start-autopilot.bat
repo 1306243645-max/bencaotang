@@ -1,7 +1,7 @@
 @echo off
 cd /d C:\Users\Admin\agent-workstation
 echo ========================================
-echo   本草堂 · 智能体自动驾驶
+echo   妙手堂 · 智能体自动驾驶
 echo ========================================
 echo.
 echo 即将自动生成 30 天全平台内容：

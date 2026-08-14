@@ -8,7 +8,7 @@
   <view wx:if="{{messages.length === 0 && showTemplates}}" style="padding: 40rpx 24rpx;">
     <view style="text-align: center; margin-bottom: 32rpx;">
       <view style="font-size: 80rpx; margin-bottom: 16rpx;">🌿</view>
-      <view style="font-size: 34rpx; font-weight: 700; color: #2D3436;">本草堂 AI 健康顾问</view>
+      <view style="font-size: 34rpx; font-weight: 700; color: #2D3436;">妙手堂 AI 健康顾问</view>
       <view style="font-size: 26rpx; color: #999; margin-top: 8rpx;">描述症状，即刻辨证分析</view>
       <view style="font-size: 22rpx; color: #C0C0C0; margin-top: 8rpx;">⚠️ AI提供健康教育信息，不替代医生诊断</view>
     </view>

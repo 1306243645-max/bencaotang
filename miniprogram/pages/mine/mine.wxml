@@ -7,7 +7,7 @@
   </view>
   <view style="margin-left: 24rpx; flex: 1;">
     <view style="font-size: 36rpx; font-weight: 700; color: #FFFFFF;">
-      {{userInfo.nickName || '本草堂用户'}}
+      {{userInfo.nickName || '妙手堂用户'}}
     </view>
     <view style="font-size: 26rpx; color: rgba(255,255,255,0.75); margin-top: 8rpx;">
       {{userInfo.phone || '点击登录 · 解锁更多功能'}}
@@ -77,7 +77,7 @@
   </view>
   <view class="menu-item" bindtap="goAbout">
     <view class="menu-icon">ℹ️</view>
-    <view class="menu-text">关于本草堂</view>
+    <view class="menu-text">关于妙手堂</view>
     <view class="menu-arrow">→</view>
   </view>
 </view>
@@ -101,5 +101,5 @@
   <view>三代传承 · 正宗中医</view>
   <view style="margin-top: 12rpx;">⚠️ AI问诊仅供健康教育参考</view>
   <view style="margin-top: 4rpx;">不构成医疗建议</view>
-  <view style="margin-top: 16rpx;">© 2026 山东本草堂中医诊所</view>
+  <view style="margin-top: 16rpx;">© 2026 山东妙手堂中医诊所</view>
 </view>

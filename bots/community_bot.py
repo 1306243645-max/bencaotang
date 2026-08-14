@@ -1,4 +1,4 @@
-"""本草堂 · 微信群运营机器人
+"""妙手堂 · 微信群运营机器人
 
 功能：自动欢迎语 + 关键词回复 + 每日定时推送 + 积分系统
 
@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 # ── 配置 ──────────────────────────────────────────────────
 
 CLINIC = {
-    "name": "本草堂中医诊所", "phone": "18254191315",
+    "name": "妙手堂中医诊所", "phone": "18254191315",
     "wechat": "18254191315", "web": "https://eleven-trains-kiss.loca.lt",
 }
 
@@ -90,11 +90,11 @@ def run_http(port=9001):
     pts = PointsSystem()
 
     # 简易管理后台
-    ADMIN_HTML = """<!DOCTYPE html><html><head><title>本草堂·社群管理</title><meta charset="utf-8">
+    ADMIN_HTML = """<!DOCTYPE html><html><head><title>妙手堂·社群管理</title><meta charset="utf-8">
     <style>body{font-family:sans-serif;max-width:800px;margin:2rem auto;padding:1rem}
     .card{background:#f0fdf4;border-radius:1rem;padding:1rem;margin:1rem 0}
     table{width:100%;border-collapse:collapse}th,td{padding:0.5rem;border-bottom:1px solid #ddd}</style></head>
-    <body><h1>🌿 本草堂 · 社群管理中心</h1>
+    <body><h1>🌿 妙手堂 · 社群管理中心</h1>
     <div class="card"><h3>📊 积分排行榜</h3><table><tr><th>用户</th><th>积分</th></tr>
     {% for uid, info in rank %}<tr><td>{{uid}}</td><td>{{info.points}}</td></tr>{% endfor %}
     </table></div>
@@ -132,7 +132,7 @@ def run_http(port=9001):
                 else:
                     reply = f"🌿 感谢咨询！请描述你的症状，或者访问 AI 问诊 👉 {CLINIC['web']}"
             else:
-                reply = f"🌿 感谢咨询！我是本草堂智能助手。\n你可以：\n• 输入「体质」开始自测\n• 输入「预约」预约挂号\n• 输入出生年份查运气体质\n• 直接访问 AI 问诊 👉 {CLINIC['web']}"
+                reply = f"🌿 感谢咨询！我是妙手堂智能助手。\n你可以：\n• 输入「体质」开始自测\n• 输入「预约」预约挂号\n• 输入出生年份查运气体质\n• 直接访问 AI 问诊 👉 {CLINIC['web']}"
 
         # 积分
         pts.add(user, 1, f"咨询: {msg[:30]}")

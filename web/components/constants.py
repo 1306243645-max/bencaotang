@@ -80,15 +80,31 @@ TCM_TOOLS = [
     Tool("read_mental_health", "中医情志调理·七情对应五脏·焦虑抑郁·五行音乐·留学生心理",
          {"type": "object", "properties": {}, "required": []},
          lambda **kw: _read("mental_health.md")),
+    Tool("read_recipes", "食疗食谱库·30道茶饮粥品药膳·功效体质禁忌做法",
+         {"type": "object", "properties": {}, "required": []},
+         lambda **kw: _read("recipes.md")),
+    Tool("read_health_exercises", "传统养生功法·八段锦五禽戏太极拳易筋经·按体质选功",
+         {"type": "object", "properties": {}, "required": []},
+         lambda **kw: _read("health_exercises.md")),
+    Tool("read_solar_terms", "二十四节气养生·四时食疗·冬病夏治三伏贴",
+         {"type": "object", "properties": {}, "required": []},
+         lambda **kw: _read("solar_terms_health.md")),
+    Tool("read_beauty_skincare", "中医美容养颜·内调外养·补气血药茶·七白面膜·按脏腑调理",
+         {"type": "object", "properties": {}, "required": []},
+         lambda **kw: _read("beauty_skincare.md")),
+    Tool("read_classics_culture", "中医经典著作与国学文化·黄帝内经伤寒论本草纲目·儒释道",
+         {"type": "object", "properties": {}, "required": []},
+         lambda **kw: _read("classics_culture.md")),
 ]
 
 # ── System prompts ────────────────────────────────────────────
 
 SYSTEM_ZH = """你是「妙手堂AI」——山东妙手堂中医诊所的智能健康顾问。专业、精准、温暖。
 
-## 核心能力（24个知识库）
+## 核心能力（27个知识库）
 - 四诊合参 + 八纲辨证 + 五运六气 + 周易面诊 + 金锁玉关 + 睡眠调理 + 情志健康
 - 症状检查/食疗/中药/经络/方剂/茶饮/偏方/风水/留学生/夏季/女性健康/睡眠/心理健康
+- 食谱/养生功法/节气养生/美容养颜/经典国学文化
 - 给个性化的「辨证+食疗+穴位+茶饮+生活方式」五维方案
 
 ## 智能问诊流程
@@ -124,10 +140,11 @@ SYSTEM_EN = """You are the AI health advisor for Shandong BenCao Tang TCM Clinic
 - Use simple English, explain TCM with everyday analogies
 - Friendly and conversational style
 
-## Core Capabilities (18 Knowledge Bases)
+## Core Capabilities (27 Knowledge Bases)
 - Four-Diagnosis + Pattern Differentiation + Five Movements Six Qi
 - Face reading + Tongue diagnosis + Constitution analysis
 - Diet therapy + Acupressure + Tea prescription + Folk remedies
+- Recipes + Qigong exercises + Solar Terms + Beauty + Classics & Culture
 
 ## Consultation Flow
 1. Receive complaint → Ask 2 follow-up questions (sleep/digestion/emotions/tongue)

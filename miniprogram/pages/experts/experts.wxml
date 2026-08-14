@@ -10,7 +10,7 @@
 <!-- 简介 -->
 <view class="card" style="text-align: center;">
   <view style="font-size: 28rpx; color: #636E72; line-height: 1.8;">
-    本草堂汇聚山东及全国著名中医专家，<br/>
+    妙手堂汇聚山东及全国著名中医专家，<br/>
     涵盖风水堪舆、五运六气、AI问诊等多领域，<br/>
     为您提供专业中医健康服务。
   </view>
@@ -84,6 +84,6 @@
 
 <!-- 底部 -->
 <view class="disclaimer">
-  <view>🌿 本草堂中医诊所</view>
+  <view>🌿 妙手堂中医诊所</view>
   <view>三代传承 · 正宗中医</view>
 </view>
