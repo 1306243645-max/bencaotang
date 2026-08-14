@@ -91,6 +91,13 @@ nav .mobile-menu a { color:var(--gold-light); text-decoration:none; font-size:1.
 .quiz-desc .step-num { background:var(--gold); color:white; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; flex-shrink:0; }
 .quiz-progress { background:#eee; border-radius:10px; height:6px; margin-bottom:2rem; overflow:hidden; }
 .quiz-progress .bar { height:100%; background:linear-gradient(90deg,var(--jade),var(--gold)); border-radius:10px; transition:width 0.5s ease; width:0; }
+.quiz-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:0.8rem; }
+.quiz-card { background:var(--cream); border:2px solid transparent; border-radius:14px; padding:1.2rem 0.8rem; text-align:center; cursor:pointer; transition:var(--transition); user-select:none; }
+.quiz-card:hover { background:#f0ebe0; transform:translateY(-2px); }
+.quiz-card.selected { background:#fff; border-color:var(--gold); box-shadow:0 4px 14px rgba(201,169,110,0.25); }
+.quiz-card .qc-emoji { font-size:2.2rem; line-height:1; }
+.quiz-card .qc-name { font-weight:700; color:var(--ink); margin:0.4rem 0 0.2rem; font-size:1rem; }
+.quiz-card .qc-desc { font-size:0.78rem; color:var(--gray); line-height:1.4; }
 .q-group { margin-bottom:1rem; padding:1rem 1.2rem; border-radius:12px; background:var(--cream); transition:var(--transition); }
 .q-group:hover { background:#f0ebe0; }
 .q-group h4 { font-size:1rem; margin-bottom:0.6rem; color:var(--ink); }
@@ -245,7 +252,7 @@ footer .disclaimer { margin-top:1.5rem; font-size:0.75rem; opacity:0.6; }
     <div class="card fade-in">
       <span class="icon">🤖</span>
       <h3>AI 智能辨证</h3>
-      <p>自主开发 AI 体质辨识系统，融合九种体质学说与五运六气理论。2 分钟精准辨识体质，自动生成个性化调理方案，让中医变得触手可及。</p>
+      <p>自主开发 AI 体质辨识系统，融合九种体质学说与五运六气理论。10 秒点选即可辨识体质，自动生成个性化调理方案，让中医变得触手可及。</p>
     </div>
     <div class="card fade-in">
       <span class="icon">🌍</span>
@@ -316,22 +323,15 @@ footer .disclaimer { margin-top:1.5rem; font-size:0.75rem; opacity:0.6; }
     <span class="emoji">🧪</span>
     <h2>中医体质自测</h2>
     <div class="line"></div>
-    <p>2 分钟 · 9 种体质 · 精准辨识</p>
+    <p>点一下最像你的体质 · 立即看调理方案</p>
   </div>
   <div class="quiz-wrap fade-in">
     <div class="quiz-desc">
-      <div class="steps">
-        <div class="step"><span class="step-num">1</span> 如实回答 27 题</div>
-        <div class="step"><span class="step-num">2</span> 查看体质类型</div>
-        <div class="step"><span class="step-num">3</span> 获取调理方案</div>
-      </div>
-      <p style="font-size:0.85rem;color:#999;">评分标准：1=从不 &nbsp; 2=偶尔 &nbsp; 3=有时 &nbsp; 4=经常 &nbsp; 5=总是</p>
+      <p style="margin:0 auto 1.5rem;max-width:520px;">下面 9 种体质，点选<strong>最符合你现在状态</strong>的（可多选），再点下方按钮，就能看到专属调理建议。</p>
     </div>
-    <div class="quiz-progress"><div class="bar" id="quizBar"></div></div>
     <div id="quiz-questions"></div>
-    <div style="text-align:center;margin-top:2rem;">
+    <div style="text-align:center;margin-top:1.5rem;">
       <button class="btn-primary" onclick="showResult()">📊 查看我的体质报告</button>
-      <p style="margin-top:0.8rem;font-size:0.8rem;color:#999;">已回答 <span id="answered-count">0</span> / 27 题</p>
     </div>
   </div>
   <div id="quiz-result">
@@ -429,7 +429,7 @@ footer .disclaimer { margin-top:1.5rem; font-size:0.75rem; opacity:0.6; }
   <div class="faq-list" style="max-width:800px;margin:0 auto;">
     <div class="faq-item fade-in">
       <div class="faq-q" onclick="toggleFaq(this)">🌿 中医体质测试需要多长时间？准确吗？<span class="arrow">▼</span></div>
-      <div class="faq-a">体质测试共27道选择题，约需2分钟完成。基于中华中医药学会《中医体质分类与判定》标准设计，结合妙手堂独家AI辨证模型，准确率高于传统问卷30%。完成测试后即可获得个性化调理建议。</div>
+      <div class="faq-a">只需 10 秒——从 9 种体质里点选最像你的（可多选），立刻给出专属调理建议。基于中华中医药学会《中医体质分类与判定》九种体质学说设计，简单好懂。</div>
     </div>
     <div class="faq-item fade-in">
       <div class="faq-q" onclick="toggleFaq(this)">🏥 诊所具体位置在哪里？可以到店就诊吗？<span class="arrow">▼</span></div>
@@ -523,15 +523,15 @@ function toggleFaq(el) {
 
 // ── Quiz Data ──
 const quiz = {
-  "😊 平和质": ["精力充沛","睡眠质量好","适应能力强"],
-  "😴 气虚质": ["容易疲劳气短","说话声音低弱","容易出虚汗"],
-  "🥶 阳虚质": ["手脚发凉","比一般人怕冷","吃凉的不舒服"],
-  "🔥 阴虚质": ["手心脚心发热","口干咽燥","容易失眠盗汗"],
-  "💧 痰湿质": ["身体沉重不爽快","腹部肥胖松软","舌苔厚腻"],
-  "🌡️ 湿热质": ["面部出油长痘","口苦口臭","大便粘滞"],
-  "😟 气郁质": ["情绪低落焦虑","容易胸闷叹气","对事情敏感"],
-  "🟣 血瘀质": ["身上容易瘀青","面色偏暗有斑","容易忘事"],
-  "🤧 特禀质": ["容易过敏","过敏性鼻炎哮喘","皮肤起荨麻疹"],
+  "😊 平和质": "精力足 · 吃得好睡得香",
+  "😴 气虚质": "容易累 · 说话没力气",
+  "🥶 阳虚质": "怕冷 · 手脚冰凉",
+  "🔥 阴虚质": "手心热 · 口干易失眠",
+  "💧 痰湿质": "身体沉 · 肚子松软",
+  "🌊 湿热质": "出油长痘 · 口苦口臭",
+  "😟 气郁质": "爱叹气 · 情绪低落",
+  "🟣 血瘀质": "易瘀青 · 面色暗有斑",
+  "🤧 特禀质": "易过敏 · 起疹子",
 };
 const advice = {
   "平和质":"🎉 祝贺！您拥有最理想的平和体质。继续保持规律作息、均衡饮食、适度运动的好习惯。建议每季度自测一次，关注体质变化。日常可饮四君子茶（党参+白术+茯苓+甘草各3g）健脾益气。",
@@ -547,64 +547,52 @@ const advice = {
 
 // ── Render Quiz ──
 const qDiv = document.getElementById('quiz-questions');
-let totalQuestions = 0;
-for (const [type, questions] of Object.entries(quiz)) {
-  const shortName = type.slice(3);
-  let html = `<div class="q-group"><h4>${type}</h4>`;
-  for (let i = 0; i < questions.length; i++) {
-    html += `<span style="display:inline-block;margin:0.3rem 0.8rem;font-size:0.85rem;">
-      ${questions[i]}:
-      <select class="q-select" data-type="${type}" data-idx="${i}" onchange="updateProgress()" aria-label="${shortName} Q${i+1}">
-        <option value="1">1</option><option value="2">2</option>
-        <option value="3" selected>3</option><option value="4">4</option><option value="5">5</option>
-      </select>
-    </span>`;
-    totalQuestions++;
-  }
-  html += '</div>';
-  qDiv.innerHTML += html;
+let selectedTypes = new Set();
+let html = '<div class="quiz-grid">';
+for (const [type, desc] of Object.entries(quiz)) {
+  html += `<div class="quiz-card" data-type="${type}" onclick="toggleCard(this)">
+    <div class="qc-emoji">${type.slice(0,2)}</div>
+    <div class="qc-name">${type.slice(3)}</div>
+    <div class="qc-desc">${desc}</div>
+  </div>`;
 }
+html += '</div>';
+qDiv.innerHTML = html;
 
-// ── Quiz Progress ──
-function updateProgress() {
-  const answered = document.querySelectorAll('.q-select').length;
-  let changed = 0;
-  document.querySelectorAll('.q-select').forEach(sel => {
-    if (sel.value !== '3') changed++;
-  });
-  const pct = Math.round((changed / answered) * 100);
-  document.getElementById('quizBar').style.width = pct + '%';
-  document.getElementById('answered-count').textContent = changed;
+// ── Toggle Card ──
+function toggleCard(el) {
+  el.classList.toggle('selected');
+  if (el.classList.contains('selected')) selectedTypes.add(el.dataset.type);
+  else selectedTypes.delete(el.dataset.type);
 }
 
 // ── Show Result ──
 function showResult() {
-  const scores = {};
-  document.querySelectorAll('.q-select').forEach(sel => {
-    if (!scores[sel.dataset.type]) scores[sel.dataset.type] = 0;
-    scores[sel.dataset.type] += parseInt(sel.value);
-  });
-  const results = Object.entries(scores).map(([k,v]) => [k, +(v/3).toFixed(1)]);
-  results.sort((a,b) => b[1] - a[1]);
-  const top = results[0], emoji = top[0].slice(0,2), typeName = top[0].slice(3);
+  if (selectedTypes.size === 0) {
+    alert('请先点选至少一个最像你的体质 🙂');
+    return;
+  }
+  const types = Array.from(selectedTypes);
+  const main = types[0];
+  const mainName = main.slice(3);
 
-  document.getElementById('result-emoji').textContent = emoji;
-  document.getElementById('result-type').textContent = '你的主要体质：' + typeName;
-  const level = top[1] >= 3.5 ? '倾向明显' : (top[1] >= 2.5 ? '兼夹体质（混合型）' : '倾向不明显');
-  document.getElementById('result-score').textContent = `得分：${top[1]}/5 — ${level}`;
+  document.getElementById('result-emoji').textContent = main.slice(0,2);
+  document.getElementById('result-type').textContent = '你的主要体质：' + mainName;
+  document.getElementById('result-score').textContent = types.length > 1
+    ? `还兼有 ${types.length - 1} 种倾向，可综合参考`
+    : '点选确认 · 体质倾向';
 
-  const colors = ['#3d6b4f','#5b8c5a','#7ab87a','#c9a96e','#d4b87a','#999','#999','#999','#999'];
   let bars = '';
-  results.forEach(([k,v], i) => {
-    bars += `<div class="bar-row"><span class="label">${k.slice(3)}</span><div class="track"><div class="fill" style="width:${(v/5)*100}%;background:${colors[i]}"></div></div><span class="score">${v}</span></div>`;
+  types.forEach(t => {
+    const n = t.slice(3);
+    bars += `<div style="background:var(--cream);padding:1.5rem;border-radius:12px;margin-top:1rem;text-align:left;">
+      <strong>${t.slice(0,2)} ${n} · 调理建议</strong><br><br>${advice[n]}</div>`;
   });
-  bars += `<div style="background:var(--cream);padding:1.5rem;border-radius:12px;margin-top:1.5rem;text-align:left;">
-    <strong>🌿 ${typeName} · 调理建议</strong><br><br>${advice[typeName]}<br><br>
+  bars += `<div style="margin-top:1.5rem;text-align:left;">
     <em style="font-size:0.8rem;color:var(--gray);">👉 微信搜「妙手堂」获取完整 AI 体质调理方案（含茶饮+食疗+穴位+运动+音乐五维方案）</em></div>`;
   document.getElementById('result-bars').innerHTML = bars;
   document.getElementById('quiz-result').style.display = 'block';
   document.getElementById('quiz-result').scrollIntoView({behavior:'smooth', block:'center'});
-  updateProgress();
 }
 
 // ── Scroll Animations ──
